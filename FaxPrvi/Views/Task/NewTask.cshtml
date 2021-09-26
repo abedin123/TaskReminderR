@@ -1,0 +1,148 @@
+﻿@model GenerateSuccess.ViewModels.NewTaskVM
+
+<div id="addiv1"></div>
+<div id="addiv2"></div>
+<div id="adinarticle"></div>
+<div id="newtaskdiv" class="container col-lg-12">
+    <div id="chilnewtaskdiv">
+        <h3>New task</h3>
+        <form action="/Task/SaveTask" method="post" id="newtaskform">
+            <div class="inputdivparentname">
+                <input class="effect inputsearch newtaskinputname" type="text" placeholder="Task name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Task name'" asp-for="TaskName" />
+                <span asp-validation-for="TaskName" class="text-danger"></span>
+            </div>
+            <textarea class="form-control textareainput" rows="4" form="formid" placeholder="Description"></textarea>
+            <input id="texthelp" type="hidden" asp-for="Description" name="Description"/>
+            <span asp-validation-for="Description" class="text-danger"></span>
+            <br />
+            <div id="createfor">
+                <span class="newtasktext">Create for:</span><br />
+                <select id="createforr" class="form-control dropdownn" asp-for="CreatedFor" name="CreatedFor">
+                    <option value="1">Once</option>
+                    <option value="2">Custom</option>
+                </select>
+                <span asp-validation-for="CreatedFor" class="text-danger"></span>
+                <div id="customcreatefor">
+                    <span class="newtasktext">Days:</span>
+                    <br />
+                    <br />
+                    <div class="weekDays-selector">
+                        <input type="checkbox" id="weekday-mon" class="weekday" name="M" asp-for="M" checked />
+                        <label for="weekday-mon">Mon</label>
+                        <input type="checkbox" id="weekday-tue" class="weekday" name="T" asp-for="T" checked />
+                        <label for="weekday-tue">Tue</label>
+                        <input type="checkbox" id="weekday-wed" class="weekday" name="W" asp-for="W" checked />
+                        <label for="weekday-wed">Wed</label>
+                        <input type="checkbox" id="weekday-thu" class="weekday" name="Th" asp-for="Th" checked />
+                        <label for="weekday-thu">Thu</label>
+                        <input type="checkbox" id="weekday-fri" class="weekday" name="F" asp-for="F" checked />
+                        <label for="weekday-fri">Fri</label>
+                        <input type="checkbox" id="weekday-sat" class="weekday" name="Sa" asp-for="Sa" checked />
+                        <label for="weekday-sat">Sat</label>
+                        <input type="checkbox" id="weekday-sun" class="weekday" name="S" asp-for="S" checked />
+                        <label for="weekday-sun">Sun</label>
+                    </div>
+                    <br />
+                    <span id="daysval" asp-validation-for="M" class="text-danger"></span>
+                    <br />
+                    <div id="startdiv" class="startenddiv">
+                        <span class="newtasktext">Start time:</span><br />
+                        <div class="childstartendtimediv">
+                            <div class="startendtimedivcustom">
+                                <input id="startimecustomvalue" asp-for="StartTimeCustom" type="time" asp-format="{0:HH:mm}" class="startendtimecustom" name="StartTimeCustom" />
+                            </div>
+                        </div>
+                        <br />
+                        <span id="starttimecustomvalidation" asp-validation-for="StartTimeCustom" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div id="enddiv" class="startenddiv">
+                        <span class="newtasktext">End time:</span><br />
+                        <div class="childstartendtimediv">
+                            <div class="startendtimedivcustom">
+                                <input id="endtimecustomvalue" asp-for="EndTimeCustom" type="time" asp-format="{0:HH:mm}" class="startendtimecustom" name="EndTimeCustom" />
+                            </div>
+                        </div>
+                        <br />
+                        <span id="endtimecustomvalidation" asp-validation-for="EndTimeCustom" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div id="oncecreated">
+                <div id="startdiv" class="startenddiv">
+                    <span class="newtasktext">Start time:</span><br />
+                    <div class="childstartendtimediv">
+                        <div class="startendtimedatediv">
+                            <input id="startdatevalue" asp-for="StartDate" type="date" asp-format="{0:yyyy-MM-dd}" class="newtaskstartdate" name="StartDate" />
+                        </div>
+                        <div class="startendtimediv">
+                            <input id="starttimevalue" asp-for="StartTimeOnce" type="time" asp-format="{0:HH:mm}" class="startendtime" name="StartTimeOnce" />
+                        </div>
+                    </div>
+                    <span id="startdateval" asp-validation-for="StartDate" class="text-danger"></span>
+                    <span id="starttimeonceval" asp-validation-for="StartTimeOnce" class="text-danger"></span>
+                </div>
+                <br />
+                <div id="enddiv" class="startenddiv">
+                    <span class="newtasktext">End time:</span><br />
+                    <div class="childstartendtimediv">
+                        <div class="startendtimedatediv">
+                            <input id="enddate" asp-for="EndDate" type="date" asp-format="{0:yyyy-MM-dd}" class="newtaskstartdate" name="EndDate" />
+                        </div>
+                        <div class="startendtimediv">
+                            <input id="endtime" asp-for="EndTimeOnce" type="time" asp-format="{0:HH:mm}" class="startendtime" name="EndTimeOnce" />
+                        </div>
+                    </div>
+                    <span id="enddateval" asp-validation-for="EndDate" class="text-danger"></span>
+                    <span id="endtimeoneval" asp-validation-for="EndTimeOnce" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+            <div id="normalpriority">
+                <div id="notifydiv">
+                    <span class="newtasktext">Notification every:</span><br />
+                    <div class="notificationdivs">
+                        <input type="number" class="inputtimefornotification" name="Hours" asp-for="Hours" value="0" /><span>(hours)</span>
+                    </div>
+                    <div class="notificationdivs">
+                        <input type="number" class="inputtimefornotification" name="Minutes" asp-for="Minutes" value="30" /><span>(minutes)</span>
+                    </div>
+                </div>
+                <span asp-validation-for="Hours" class="text-danger"></span>
+                <span asp-validation-for="Minutes" class="text-danger"></span>
+                <br />
+                <span class="newtasktext">Priority:</span>
+                <br />
+                <select id="priority" class="form-control dropdownn" asp-for="Priority" name="Priority">
+                    <option value="1">Low</option>
+                    <option value="2">Normal</option>
+                    <option value="3" selected>High</option>
+                </select>
+                <span asp-validation-for="Priority" class="text-danger"></span>
+                <br />
+                <span class="newtasktext">Notification sound: </span>
+                <select id="tasksound" class="form-control dropdownn" asp-for="Sound" name="Sound">
+                    <option value="1">Let's do it!</option>
+                    <option value="2">The winner's move!</option>
+                    <option value="3">Quick decision!</option>
+                    <option value="4">A victorious fall!</option>
+                    <option value="5">Rapid ascent!</option>
+                    <option value="6">Slow springboard!</option>
+                    <option value="7">A story of enjoyment!</option>
+                </select>
+                <span asp-validation-for="Sound" class="text-danger"></span>
+            </div>
+            <br />
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <span class="helptext">For permanent storage of task <a href="/Account/Login">Log in</a></span>
+                <br />
+                <br />
+            }
+            <button type="submit" id="savetaskbutton" class="btn savetaskbtn">Save task</button>
+            <br />
+        </form>
+    </div>
+</div>
+

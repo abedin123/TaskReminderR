@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="1" xml:space="preserve">
+    <value>We are a digital marketing agency whose work is based on the promotion of very useful web applications and websites.
+            Our applications are known and used around the world and they are applicable in various professions.
+            This is one of our applications whose use is completely free, we called it task reminder and you call it whatever you want,
+            the only thing that matters is that this application is of great use to you in solving your daily, monthly or annual events.
+            Our web application can be used as a</value>
+  </data>
+  <data name="10" xml:space="preserve">
+    <value>Using and managing</value>
+  </data>
+  <data name="11" xml:space="preserve">
+    <value>Use and management is presented in a very simple way in our application. You will add all the necessary information in the moment
+            of creation. After that, our application does the rest of the work without any modification or change of settings unless
+            you want to do it yourself.</value>
+  </data>
+  <data name="12" xml:space="preserve">
+    <value>There are a few short steps to creating a task</value>
+  </data>
+  <data name="13" xml:space="preserve">
+    <value>Press the button "New Task"</value>
+  </data>
+  <data name="14" xml:space="preserve">
+    <value>Set the name</value>
+  </data>
+  <data name="15" xml:space="preserve">
+    <value>Set the description(optional)</value>
+  </data>
+  <data name="16" xml:space="preserve">
+    <value>Adjust the settings(Create for,Time,Notification every and Priority)</value>
+  </data>
+  <data name="17" xml:space="preserve">
+    <value>Set the sound</value>
+  </data>
+  <data name="18" xml:space="preserve">
+    <value>Press the button "Save Task"</value>
+  </data>
+  <data name="19" xml:space="preserve">
+    <value>We will now clarify those parts that we think may cause confusion while using the reminder</value>
+  </data>
+  <data name="2" xml:space="preserve">
+    <value>calendar for work</value>
+  </data>
+  <data name="20" xml:space="preserve">
+    <value>Adjust the settings</value>
+  </data>
+  <data name="21" xml:space="preserve">
+    <value>Create for</value>
+  </data>
+  <data name="22" xml:space="preserve">
+    <value>The Create for list is intended to specify the
+            number of times the event should be repeated. In case you have selected "Once" your event will be completed only on that specific
+            date. If you select "Custom", you have the option to specify the days on which a specific event will run. After selecting one of
+            the two options from the list the app will offer you two ways to select the time. In case you have selected "Once" you have the
+            opportunity to choose both the date and time of execution, in the second case you will be offered only the time because
+            you should have previously marked in green the days in which you want your task to be executed.</value>
+  </data>
+  <data name="23" xml:space="preserve">
+    <value>How to use alarm clock</value>
+  </data>
+  <data name="24" xml:space="preserve">
+    <value>There are a few short steps to creating an alarm</value>
+  </data>
+  <data name="25" xml:space="preserve">
+    <value>Press the button "New Alarm"</value>
+  </data>
+  <data name="26" xml:space="preserve">
+    <value>Set the name</value>
+  </data>
+  <data name="27" xml:space="preserve">
+    <value>Adjust the settings(Create for,Time,Ringing duration,Snooze duration)</value>
+  </data>
+  <data name="28" xml:space="preserve">
+    <value>Set the sound</value>
+  </data>
+  <data name="29" xml:space="preserve">
+    <value>Press the button "Save Alarm"</value>
+  </data>
+  <data name="3" xml:space="preserve">
+    <value>where you can save all your work events</value>
+  </data>
+  <data name="30" xml:space="preserve">
+    <value>We will now clarify those parts that we think may cause confusion while using the alarm clock</value>
+  </data>
+  <data name="31" xml:space="preserve">
+    <value>The Create for list is intended to specify the
+            number of times the event should be repeated. In case you have selected "Once" your alarm will be completed every
+            day in the selected time. If you select "Custom", you have the option to specify the days on which a specific alarm will run.</value>
+  </data>
+  <data name="32" xml:space="preserve">
+    <value>Data recovery</value>
+  </data>
+  <data name="33" xml:space="preserve">
+    <value>What is important to note is that we have two ways to save data
+            and that is authenticated and unauthenticated. If you save data unauthenticated then your tasks or alarms will be saved for 24
+            hours and then deleted. If you want to permanently record your data in our database then register on our app with a
+            simple entry of username and password.</value>
+  </data>
+  <data name="4" xml:space="preserve">
+    <value>Your</value>
+  </data>
+  <data name="5" xml:space="preserve">
+    <value>tasks list</value>
+  </data>
+  <data name="6" xml:space="preserve">
+    <value>or</value>
+  </data>
+  <data name="7" xml:space="preserve">
+    <value>alarms list</value>
+  </data>
+  <data name="8" xml:space="preserve">
+    <value>can be of unlimited length and this will not interfere with the operation of our application in any way. In the following, we will try to briefly and clearly explain the operation of our application and its use. We wish you luck in your business and we hope that our work will be of great help!</value>
+  </data>
+  <data name="9" xml:space="preserve">
+    <value>How to use reminder</value>
+  </data>
+  <data name="AlarmClockOnline" xml:space="preserve">
+    <value>alarm clock online</value>
+  </data>
+  <data name="CalendarForWork" xml:space="preserve">
+    <value>calendar for work</value>
+  </data>
+  <data name="ClockTitle" xml:space="preserve">
+    <value>Online Alarm Clock</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="CookiesPolicy" xml:space="preserve">
+    <value>Cookies policy</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Planning the day has never been easier in our task reminder! Also set an alarm on the second part of our app and improve your life organization!</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hello</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="LifeOrganization" xml:space="preserve">
+    <value>life organization</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="MacCalendar" xml:space="preserve">
+    <value>mac calendar</value>
+  </data>
+  <data name="OnlineAlarmClock" xml:space="preserve">
+    <value>online alarm clock</value>
+  </data>
+  <data name="OnlineStopWatch" xml:space="preserve">
+    <value>online stopwatch</value>
+  </data>
+  <data name="PlanningTheDay" xml:space="preserve">
+    <value>planning the day</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Privacy policy</value>
+  </data>
+  <data name="ReminderApp" xml:space="preserve">
+    <value>reminder app</value>
+  </data>
+  <data name="ReminderTitle" xml:space="preserve">
+    <value>Free Online Reminder App</value>
+  </data>
+  <data name="SetAlarm" xml:space="preserve">
+    <value>set alarm</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="TasksList" xml:space="preserve">
+    <value>tasks list</value>
+  </data>
+  <data name="WhatAboutUs" xml:space="preserve">
+    <value>What about us</value>
+  </data>
+</root>

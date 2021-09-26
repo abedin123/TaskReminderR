@@ -1,0 +1,23 @@
+﻿@model GenerateSuccess.ViewModels.RegisterVM
+
+<div id="parentregisterdiv" class="container">
+    <div id="userregisterdiv" class="user signupBx">
+        <div id="formBx">
+            <form action="/Account/Register" method="post">
+                <h2 id="h2register">Create an account</h2>
+                <input class="inputregister" type="text" name="UserName" placeholder="Username" asp-for="UserName" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+                <input class="inputregister" name="Password" type="password" placeholder="Create Password" asp-for="Password"/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+                <input class="inputregister" name="ConfirmPassword" type="password" placeholder="Confirm Password" asp-for="ConfirmPassword"/>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                <button type="submit" class="inputregistersubmit">Sign Up</button>
+                <p class="signup">
+                    Already have an account ?
+                    <a href="/Account/Login">Sign in.</a>
+                </p>
+            </form>
+        </div>
+        <div id="imgBx" class="registerphoto"></div>
+    </div>
+</div>

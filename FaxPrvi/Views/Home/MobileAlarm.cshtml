@@ -1,0 +1,205 @@
+﻿@model GenerateSuccess.ViewModels.MainHomePreviewVM
+
+
+<div id="mainnotificationdiv" style="display:none;">
+    <div id="tasknotificationdiv">
+        @if (Model != null)
+        {
+            @if (Model.MainNotification != null)
+            {
+                @if (Model.MainNotification.TaskList.Any())
+                {
+                    @foreach (var item in Model.MainNotification.TaskList)
+                    {
+                        <div class="tasknotification">
+                            <input asp-for="@item.Key" type="text" readonly />
+                            <input type="text" readonly asp-for="@item.TaskName" />
+                            <input asp-for="@item.StartTime" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
+                            <input asp-for="@item.StartTime" type="time" asp-format="{0:HH:mm}" readonly />
+                            <input asp-for="@item.EndTime" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
+                            <input asp-for="@item.EndTime" type="time" asp-format="{0:HH:mm}" readonly />
+                            <input asp-for="@item.LastNotification" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
+                            <input asp-for="@item.LastNotification" type="time" asp-format="{0:HH:mm}" readonly />
+                            <input asp-for="@item.NotificationEvery" type="number" readonly />
+                            <input asp-for="@item.Priority" type="text" readonly />
+                            <input asp-for="@item.SoundName" type="text" readonly />
+                            <input asp-for="@item.Days" type="text" readonly />
+                            <input asp-for="@item.CreatedFor" type="text" readonly />
+                            <input asp-for="@item.Stats" type="text" readonly />
+                            <input asp-for="@item.AcceptedNotification" type="text" readonly />
+                            <input asp-for="@item.Rated" type="text" readonly />
+                        </div>
+                    }
+                }
+            }
+        }
+    </div>
+    <div id="alarmnotificationdiv">
+        @if (Model != null)
+        {
+            @if (Model.MainNotification != null)
+            {
+                @if (Model.MainNotification.AlarmList.Any())
+                {
+                    @foreach (var item in Model.MainNotification.AlarmList)
+                    {
+                        <div class="alarmnotification">
+                            <input asp-for="@item.Key" type="text" readonly />
+                            <input asp-for="@item.AlarmName" type="text" readonly />
+                            <input asp-for="@item.RingingTime" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
+                            <input asp-for="@item.RingingTime" type="time" asp-format="{0:HH:mm}" readonly />
+                            <input asp-for="@item.LastSnooze" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
+                            <input asp-for="@item.LastSnooze" type="time" asp-format="{0:HH:mm}" readonly />
+                            <input asp-for="@item.RingDuration" type="number" readonly />
+                            <input asp-for="@item.SnoozeDuration" type="number" readonly />
+                            <input asp-for="@item.SoundName" type="text" readonly />
+                            <input asp-for="@item.Days" type="text" readonly />
+                            <input asp-for="@item.CreatedFor" type="text" readonly />
+                            <input asp-for="@item.LastAlarmRinging" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
+                        </div>
+                    }
+                }
+            }
+        }
+    </div>
+</div>
+<div id="loadtest" style="display:none;">
+    Test
+</div>
+<div id="ads"></div>
+<div id="parentmainmobilediv">
+    <div class="mainmobilediv">
+        <div class="addnewtaskalarmparent">
+            <a href="/Alarm/NewAlarmMobile" class="btn addnewtaskalarm">New alarm</a>
+        </div>
+        <div class="smallsearchrightdiv">
+            <button id="filtertexttwo" class="smallsearchfiltertext" onclick="Close1()">Filter</button>
+        </div>
+        <div id="smallsearchdivright">
+            <div id="rightsearchdivsmall" class="col-lg-4 col-md-12 searchtaskchilddiv">
+                <form action="/Home/AlarmSearchMobile">
+                    <span class="researchtext">Search by:</span><br />
+                    <div id="status">
+                        <span class="researchtext status">Status:</span>
+                        <div class="sel sel--black-panther rightdivsearch">
+                            <span class="arroww"></span>
+                            <select name="AlarmStatus" asp-for="AlarmStatus" class="smallprofessionselectalarm">
+                                <option value="0">All</option>
+                                <option value="1">All</option>
+                                <option value="2">Active</option>
+                                <option value="3">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="daysearch">
+                        <span class="researchtext status">Day:</span><br />
+                        <div id="customcreateforright">
+                            <div class="weekDays-selector">
+                                @if (Model.M == "true")
+                                {
+                                    <input type="checkbox" id="weekday-mon" class="weekday" asp-for="M" name="M" checked />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="weekday-mon" class="weekday" asp-for="M" name="M" />
+                                }
+                                <label for="weekday-mon">Mon</label>
+                                @if (Model.T == "true")
+                                {
+                                    <input type="checkbox" id="weekday-tue" class="weekday" asp-for="T" name="T" checked />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="weekday-tue" class="weekday" asp-for="T" name="T" />
+                                }
+                                <label for="weekday-tue">Tue</label>
+                                @if (Model.W == "true")
+                                {
+                                    <input type="checkbox" id="weekday-wed" class="weekday" asp-for="W" name="W" checked />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="weekday-wed" class="weekday" asp-for="W" name="W" />
+                                }
+                                <label for="weekday-wed">Wed</label>
+                                @if (Model.Th == "true")
+                                {
+                                    <input type="checkbox" id="weekday-thu" class="weekday" asp-for="Th" name="Th" checked />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="weekday-thu" class="weekday" asp-for="Th" name="Th" />
+                                }
+                                <label for="weekday-thu">Thu</label>
+                                @if (Model.F == "true")
+                                {
+                                    <input type="checkbox" id="weekday-fri" class="weekday" asp-for="F" name="F" checked />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="weekday-fri" class="weekday" asp-for="F" name="F" />
+                                }
+                                <label for="weekday-fri">Fri</label>
+                                @if (Model.Sa == "true")
+                                {
+                                    <input type="checkbox" id="weekday-sat" class="weekday" asp-for="Sa" name="Sa" checked />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="weekday-sat" class="weekday" asp-for="Sa" name="Sa" />
+                                }
+                                <label for="weekday-sat">Sat</label>
+                                @if (Model.S == "true")
+                                {
+                                    <input type="checkbox" id="weekday-sun" class="weekday" asp-for="S" name="S" checked />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="weekday-sun" class="weekday" asp-for="S" name="S" />
+                                }
+                                <label for="weekday-sun">Sun</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btnsearchdiv">
+                        <button type="submit" class="btn btnsearch">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="mobilesearchcontainer" class="col-lg-12 searchcontainer">
+            <div class="col-lg-12 maintaskalarm">
+                @if (Model != null)
+                {
+                    @if (Model.AlarmList != null)
+                    {
+                        @if (Model.AlarmList.Any())
+                        {
+                            @foreach (var item in Model.AlarmList)
+                            {
+                                <div class="task">
+                                    <div class="col-lg-10 col-md-10 parentmainsearchdiv">
+                                        <div class="statusdiv"><span class="statustext">Status:</span><span class="statusundertext">@item.Status</span></div>
+                                        <div class="maintaskdiv"><span class="nameofthetask">@item.AlarmName</span></div>
+                                        <div class="prioritytaskdiv"><span class="prirotytext">@item.DateDayStarting</span><span class="priorityundertext">@item.TimeStarting</span></div>
+                                    </div>
+                                    <div class="editdeletetaskdiv">
+                                        <form asp-controller="Alarm" asp-action="EditAlarmMobile" method="post">
+                                            <input type="hidden" value="@item.Key" name="Key" />
+                                            <div class="editdiv"><button type="submit" class="button touch edit editbtn"></button></div>
+                                        </form>
+                                        <div class="closediv closealarmdiv">
+                                            <a class="button touch delete deletebtn"></a>
+                                            <input type="hidden" value="@item.Key" />
+                                            <input type="hidden" value="@item.AlarmName" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

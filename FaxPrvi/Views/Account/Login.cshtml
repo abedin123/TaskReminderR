@@ -1,0 +1,32 @@
+﻿@model GenerateSuccess.ViewModels.LoginVM
+
+@{ 
+    var logindetailstext = @Model.Uncorrectdetails;
+}
+
+<div id="parentregisterdiv" class="container">
+    <div id="userregisterdiv" class="user signupBx">
+        <div id="formBx">
+            <form action="/Account/Login" method="post">
+                <h2 id="h2register">Login</h2>
+                <input class="inputregister" type="text" name="UserName" placeholder="Username" asp-for="UserName" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+                <input class="inputregister" type="password" name="Password" placeholder="Create Password" asp-for="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+               
+                <input id="detailsnotcorrect" value="@logindetailstext" class="text-danger" readonly/>
+                
+                <div id="loginrememberdiv">
+                    <input asp-for="RememberMe" type="checkbox" class="custom-control-input">
+                    <label class="custom-control-label" asp-for="RememberMe">Remember me</label>
+                </div>
+                <button type="submit" class="inputregistersubmit">Sign In</button>
+                <p class="signup">
+                    You do not have an account ?
+                    <a href="/Account/Register">Sign up.</a>
+                </p>
+            </form>
+        </div>
+        <div id="imgBx" class="loginphoto"></div>
+    </div>
+</div>
