@@ -1,29 +1,31 @@
-﻿@model GenerateSuccess.ViewModels.NewTaskVM
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model GenerateSuccess.ViewModels.NewTaskVM
 
 <div id="addiv1"></div>
 <div id="addiv2"></div>
 <div id="adinarticle"></div>
 <div id="newtaskdiv" class="container col-lg-12">
     <div id="chilnewtaskdiv">
-        <h3>Edit task</h3>
-        <form action="/Task/SaveTaskChangesMobile" method="post" id="formid">
+        <h3>@Localizer["1"]</h3>
+        <form asp-controller="Task" asp-action="SaveTaskChangesMobile" method="post" id="formid">
             <div class="inputdivparentname">
-                <input class="effect inputsearch newtaskinputname" type="text" placeholder="Task name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Task name'" asp-for="TaskName" name="TaskName" />
+                <input class="effect inputsearch newtaskinputname" type="text" placeholder="@Localizer["2"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["2"]'" asp-for="TaskName" name="TaskName" />
                 <span asp-validation-for="TaskName" class="text-danger"></span>
             </div>
-            <input type="hidden" readonly asp-for="@Model.Key" name="Key"/>
-            <textarea class="form-control textareainput" rows="4" name="description" form="formid" placeholder="Description" asp-for="Description"></textarea>
+            <input type="hidden" readonly asp-for="@Model.Key" name="Key" />
+            <textarea class="form-control textareainput" rows="4" name="Description" form="formid" placeholder="@Localizer["3"]" asp-for="Description"></textarea>
             <span asp-validation-for="Description" class="text-danger"></span>
             <br />
             <div id="createfor">
-                <span class="newtasktext">Create for:</span><br />
+                <span class="newtasktext">@Localizer["4"]:</span><br />
                 <select id="createforr" class="form-control dropdownn" asp-for="CreatedFor" name="CreatedFor">
-                    <option value="1">Once</option>
-                    <option value="2">Custom</option>
+                    <option value="1">@Localizer["5"]</option>
+                    <option value="2">@Localizer["6"]</option>
                 </select>
                 <span asp-validation-for="CreatedFor" class="text-danger"></span>
                 <div id="customcreatefor">
-                    <span class="newtasktext">Days:</span>
+                    <span class="newtasktext">@Localizer["7"]:</span>
                     <br />
                     <br />
                     <div class="weekDays-selector">
@@ -35,7 +37,7 @@
                         {
                             <input type="checkbox" id="weekday-mon" class="weekday" name="M" asp-for="M" />
                         }
-                        <label for="weekday-mon">Mon</label>
+                        <label for="weekday-mon">@Localizer["Mon"]</label>
                         @if (Model.T == "true")
                         {
                             <input type="checkbox" id="weekday-tue" class="weekday" name="T" asp-for="T" checked />
@@ -44,7 +46,7 @@
                         {
                             <input type="checkbox" id="weekday-tue" class="weekday" name="T" asp-for="T" />
                         }
-                        <label for="weekday-tue">Tue</label>
+                        <label for="weekday-tue">@Localizer["Tue"]</label>
                         @if (Model.W == "true")
                         {
                             <input type="checkbox" id="weekday-wed" class="weekday" name="W" asp-for="W" checked />
@@ -53,7 +55,7 @@
                         {
                             <input type="checkbox" id="weekday-wed" class="weekday" name="W" asp-for="W" />
                         }
-                        <label for="weekday-wed">Wed</label>
+                        <label for="weekday-wed">@Localizer["Wed"]</label>
                         @if (Model.Th == "true")
                         {
                             <input type="checkbox" id="weekday-thu" class="weekday" name="Th" asp-for="Th" checked />
@@ -62,7 +64,7 @@
                         {
                             <input type="checkbox" id="weekday-thu" class="weekday" name="Th" asp-for="Th" />
                         }
-                        <label for="weekday-thu">Thu</label>
+                        <label for="weekday-thu">@Localizer["Thu"]</label>
                         @if (Model.F == "true")
                         {
                             <input type="checkbox" id="weekday-fri" class="weekday" name="F" asp-for="F" checked />
@@ -71,7 +73,7 @@
                         {
                             <input type="checkbox" id="weekday-fri" class="weekday" name="F" asp-for="F" />
                         }
-                        <label for="weekday-fri">Fri</label>
+                        <label for="weekday-fri">@Localizer["Fri"]</label>
                         @if (Model.Sa == "true")
                         {
                             <input type="checkbox" id="weekday-sat" class="weekday" name="Sa" asp-for="Sa" checked />
@@ -80,22 +82,22 @@
                         {
                             <input type="checkbox" id="weekday-sat" class="weekday" name="Sa" asp-for="Sa" />
                         }
-                        <label for="weekday-sat">Sat</label>
+                        <label for="weekday-sat">@Localizer["Sat"]</label>
                         @if (Model.S == "true")
                         {
                             <input type="checkbox" id="weekday-sun" class="weekday" name="S" asp-for="S" checked />
                         }
                         else
                         {
-                            <input type="checkbox" id="weekday-sun" class="weekday" name="S" asp-for="S"/>
+                            <input type="checkbox" id="weekday-sun" class="weekday" name="S" asp-for="S" />
                         }
-                        <label for="weekday-sun">Sun</label>
+                        <label for="weekday-sun">@Localizer["Sun"]</label>
                     </div>
                     <br />
                     <span id="daysval" asp-validation-for="M" class="text-danger"></span>
                     <br />
                     <div id="startdiv" class="startenddiv">
-                        <span class="newtasktext">Start time:</span><br />
+                        <span class="newtasktext">@Localizer["8"]:</span><br />
                         <div class="childstartendtimediv">
                             <div class="startendtimedivcustom">
                                 <input id="startimecustomvalue" asp-for="StartTimeCustom" type="time" asp-format="{0:HH:mm}" class="startendtimecustom" name="StartTimeCustom" />
@@ -106,7 +108,7 @@
                     </div>
                     <br />
                     <div id="enddiv" class="startenddiv">
-                        <span class="newtasktext">End time:</span><br />
+                        <span class="newtasktext">@Localizer["9"]:</span><br />
                         <div class="childstartendtimediv">
                             <div class="startendtimedivcustom">
                                 <input id="endtimecustomvalue" asp-for="EndTimeCustom" type="time" asp-format="{0:HH:mm}" class="startendtimecustom" name="EndTimeCustom" />
@@ -120,7 +122,7 @@
             <br />
             <div id="oncecreated">
                 <div id="startdiv" class="startenddiv">
-                    <span class="newtasktext">Start time:</span><br />
+                    <span class="newtasktext">@Localizer["8"]:</span><br />
                     <div class="childstartendtimediv">
                         <div class="startendtimedatediv">
                             <input id="startdatevalue" asp-for="StartDate" type="date" asp-format="{0:yyyy-MM-dd}" class="newtaskstartdate" name="StartDate" />
@@ -134,7 +136,7 @@
                 </div>
                 <br />
                 <div id="enddiv" class="startenddiv">
-                    <span class="newtasktext">End time:</span><br />
+                    <span class="newtasktext">@Localizer["9"]:</span><br />
                     <div class="childstartendtimediv">
                         <div class="startendtimedatediv">
                             <input id="enddate" asp-for="EndDate" type="date" asp-format="{0:yyyy-MM-dd}" class="newtaskstartdate" name="EndDate" />
@@ -150,104 +152,104 @@
             <br />
             <div id="normalpriority">
                 <div id="notifydiv">
-                    <span class="newtasktext">Notification every:</span><br />
+                    <span class="newtasktext">@Localizer["10"]:</span><br />
                     <div class="notificationdivs">
-                        <input type="number" class="inputtimefornotification" name="Hours" asp-for="Hours"/><span>(hours)</span>
+                        <input type="number" class="inputtimefornotification" name="Hours" asp-for="Hours" /><span>(@Localizer["11"])</span>
                     </div>
                     <div class="notificationdivs">
-                        <input type="number" class="inputtimefornotification" name="Minutes" asp-for="Minutes"/><span>(minutes)</span>
+                        <input type="number" class="inputtimefornotification" name="Minutes" asp-for="Minutes" /><span>(@Localizer["12"])</span>
                     </div>
                 </div>
                 <span asp-validation-for="Hours" class="text-danger"></span>
                 <span asp-validation-for="Minutes" class="text-danger"></span>
                 <br />
-                <span class="newtasktext">Priority:</span>
+                <span class="newtasktext">@Localizer["13"]:</span>
                 <br />
                 <select id="priority" class="form-control dropdownn" asp-for="Priority" name="Priority">
                     @if (Model.Priority == "Low")
                     {
-                        <option value="1" selected>Low</option>
+                        <option value="1" selected>@Localizer["14"]</option>
                     }
                     else
                     {
-                        <option value="1">Low</option>
+                        <option value="1">@Localizer["14"]</option>
                     }
                     @if (Model.Priority == "Normal")
                     {
-                        <option value="2" selected>Normal</option>
+                        <option value="2" selected>@Localizer["15"]</option>
                     }
                     else
                     {
-                        <option value="2">Normal</option>
+                        <option value="2">@Localizer["15"]</option>
                     }
                     @if (Model.Priority == "High")
                     {
-                        <option value="3" selected>High</option>
+                        <option value="3" selected>@Localizer["16"]</option>
                     }
                     else
                     {
-                        <option value="3">High</option>
+                        <option value="3">@Localizer["16"]</option>
                     }
                 </select>
                 <span asp-validation-for="Priority" class="text-danger"></span>
                 <br />
-                <span class="newtasktext">Notification sound: </span>
+                <span class="newtasktext">@Localizer["17"]: </span>
                 <select id="tasksound" class="form-control dropdownn" asp-for="Sound" name="Sound">
                     @if (Model.Sound == "TaskSound1")
                     {
-                        <option value="1" selected>Let's do it!</option>
+                        <option value="1" selected>@Localizer["18"]</option>
                     }
                     else
                     {
-                        <option value="1">Let's do it!</option>
+                        <option value="1">@Localizer["18"]</option>
                     }
                     @if (Model.Sound == "TaskSound2")
                     {
-                        <option value="2" selected>The winner's move!</option>
+                        <option value="2" selected>@Localizer["19"]</option>
                     }
                     else
                     {
-                        <option value="2">The winner's move!</option>
+                        <option value="2">@Localizer["19"]</option>
                     }
                     @if (Model.Sound == "TaskSound3")
                     {
-                        <option value="3" selected>Quick decision!</option>
+                        <option value="3" selected>@Localizer["20"]</option>
                     }
                     else
                     {
-                        <option value="3">Quick decision!</option>
+                        <option value="3">@Localizer["20"]</option>
                     }
                     @if (Model.Sound == "TaskSound4")
                     {
-                        <option value="4" selected>A victorious fall!</option>
+                        <option value="4" selected>@Localizer["21"]</option>
                     }
                     else
                     {
-                        <option value="4">A victorious fall!</option>
+                        <option value="4">@Localizer["21"]</option>
                     }
                     @if (Model.Sound == "TaskSound5")
                     {
-                        <option value="5" selected>Rapid ascent!</option>
+                        <option value="5" selected>@Localizer["22"]</option>
                     }
                     else
                     {
-                        <option value="5">Rapid ascent!</option>
+                        <option value="5">@Localizer["22"]</option>
                     }
                     @if (Model.Sound == "TaskSound6")
                     {
-                        <option value="6" selected>Slow springboard!</option>
+                        <option value="6" selected>@Localizer["23"]</option>
                     }
                     else
                     {
-                        <option value="6">Slow springboard!</option>
+                        <option value="6">@Localizer["23"]</option>
                     }
                     @if (Model.Sound == "TaskSound7")
                     {
-                        <option value="7" selected>A story of enjoyment!</option>
+                        <option value="7" selected>@Localizer["24"]</option>
                     }
                     else
                     {
-                        <option value="7">A story of enjoyment!</option>
+                        <option value="7">@Localizer["24"]</option>
                     }
                 </select>
                 <span asp-validation-for="Sound" class="text-danger"></span>
@@ -255,11 +257,11 @@
             <br />
             @if (!User.Identity.IsAuthenticated)
             {
-                <span class="helptext">For permanent storage of task <a href="/Account/Login">Log in</a></span>
+                <span class="helptext">@Localizer["25"] <a asp-controller="Account" asp-action="Login">@Localizer["26"]</a></span>
                 <br />
                 <br />
             }
-            <button type="submit" id="savetaskbutton" class="btn savetaskbtn">Save task</button>
+            <button type="submit" id="savetaskbutton" class="btn savetaskbtn">@Localizer["27"]</button>
             <br />
         </form>
     </div>

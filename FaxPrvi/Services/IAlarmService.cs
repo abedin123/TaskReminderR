@@ -9,7 +9,7 @@ namespace GenerateSuccess.Services
 {
     public interface IAlarmService
     {
-        public string GenerateAlarmName(string UserName);
+        public string GenerateAlarmName(string UserName,string Language);
         public string AddAlarm(NewAlarmVM model, string User);
         public Alarms AddAlarmUnAuth(NewAlarmVM model, List<Alarms> list);
         public List<AlarmPreviewVM> GetListAlarms(string UserName, HomeFilterVM filter);

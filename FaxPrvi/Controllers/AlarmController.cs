@@ -19,19 +19,50 @@ namespace GenerateSuccess.Controllers
     public class AlarmController : Controller
     {
         private readonly IAlarmService _alarmService;
+        private string _currentLanguage;
+        private IHttpContextAccessor _httpContextAccessor;
+
+        public IActionResult RedirectToDefaultLanguage()
+        {
+            var lang = CurrentLanguage;
+
+            if (lang != "en-US" && lang != "ja-JP" && lang != "th-TH" && lang != "pt-BR" && lang != "vi-VN" && lang != "uk-UA")
+            {
+                lang = "en-US";
+            }
+
+
+            return RedirectToAction("Index", new { lang = lang });
+        }
+
+        private string CurrentLanguage
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(_currentLanguage))
+                {
+                    return _currentLanguage;
+                }
+
+                return _currentLanguage;
+            }
+        }
 
         private List<Alarms> AlarmList = new List<Alarms>();
 
-        public AlarmController(IAlarmService alarmService)
+        public AlarmController(IAlarmService alarmService, IHttpContextAccessor httpContextAccessor)
         {
             _alarmService = alarmService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         [AcceptVerbs("GET", "POST")]
         public IActionResult CreatedForVal(string CreatedFor)
         {
             if (CreatedFor != "1" && CreatedFor != "2")
+            {
                 return Json($"Please enter valid values ​​in this field!");
+            }
 
             return Json(true);
         }
@@ -40,7 +71,9 @@ namespace GenerateSuccess.Controllers
         public IActionResult RingingDurVal(string RingingDuration)
         {
             if (RingingDuration != "1" && RingingDuration != "3" && RingingDuration != "5" && RingingDuration != "10" && RingingDuration != "15" && RingingDuration != "20" && RingingDuration != "30")
+            {
                 return Json($"Please enter valid values ​​in this field!");
+            }
 
             return Json(true);
         }
@@ -49,7 +82,9 @@ namespace GenerateSuccess.Controllers
         public IActionResult SnoozedurVal(string SnoozeDuration)
         {
             if (SnoozeDuration != "5" && SnoozeDuration != "10" && SnoozeDuration != "15" && SnoozeDuration != "20" && SnoozeDuration != "25" && SnoozeDuration != "30")
+            {
                 return Json($"Please enter valid values ​​in this field!");
+            }
 
             return Json(true);
         }
@@ -58,7 +93,9 @@ namespace GenerateSuccess.Controllers
         public IActionResult SoundVal(string Sound)
         {
             if (Sound != "1" && Sound != "2" && Sound != "3" && Sound != "4" && Sound != "5" && Sound != "6" && Sound!="7")
+            {
                 return Json($"Please enter valid values ​​in this field!");
+            }
 
             return Json(true);
         }
@@ -67,7 +104,9 @@ namespace GenerateSuccess.Controllers
         public IActionResult ActivityVal(string Activity)
         {
             if (Activity != "1" && Activity != "2")
+            {
                 return Json($"Please enter valid values ​​in this field!");
+            }
 
             return Json(true);
         }
@@ -81,7 +120,10 @@ namespace GenerateSuccess.Controllers
             int Minute = int.Parse((CurrentTime[14].ToString() + CurrentTime[15].ToString()));
 
             DateTime CurrentRealTime = new DateTime(Year, Month, Day, Hour, Minute, 0);
-
+            if (CurrentRealTime.ToShortDateString().Contains("2564") || CurrentRealTime.ToShortDateString().Contains("2565"))
+            {
+                CurrentRealTime = CurrentRealTime.AddYears(-543);
+            }
             return CurrentRealTime;
         }
 
@@ -99,7 +141,32 @@ namespace GenerateSuccess.Controllers
 
         private string GenerateAlarmName()
         {
-            string name = "Alarm";
+            _currentLanguage = _httpContextAccessor.HttpContext.GetRouteValue("lang") as string;
+            string name = "";
+            if (_currentLanguage == "en-US")
+            {
+                name = "Alarm";
+            }
+            if (_currentLanguage == "ja-JP")
+            {
+                name = "警報";
+            }
+            if (_currentLanguage == "th-TH")
+            {
+                name = "เตือน";
+            }
+            if (_currentLanguage == "pt-BR")
+            {
+                name = "Alarme";
+            }
+            if (_currentLanguage == "vi-VN")
+            {
+                name = "Báo thức";
+            }
+            if (_currentLanguage == "uk-UA")
+            {
+                name = "Сигналізація";
+            }
             int numberoftasks = AlarmList.Count;
             if (numberoftasks >= 1)
             {
@@ -107,12 +174,12 @@ namespace GenerateSuccess.Controllers
             }
             else
             {
-                name = "Alarm[1]";
+                name += "[1]";
             }
             while (IfExistName(AlarmList, name))
             {
                 numberoftasks++;
-                name = "Alarm[" + (numberoftasks + 1).ToString() + "]";
+                name += "[" + (numberoftasks + 1).ToString() + "]";
             }
             return name;
         }
@@ -156,7 +223,8 @@ namespace GenerateSuccess.Controllers
                 string AlarmDefaultName;
                 if (User.Identity.IsAuthenticated)
                 {
-                    AlarmDefaultName = _alarmService.GenerateAlarmName(User.Identity.Name);
+                    _currentLanguage = _httpContextAccessor.HttpContext.GetRouteValue("lang") as string;
+                    AlarmDefaultName = _alarmService.GenerateAlarmName(User.Identity.Name, _currentLanguage);
                 }
                 else
                 {
@@ -192,7 +260,8 @@ namespace GenerateSuccess.Controllers
                 string AlarmDefaultName;
                 if (User.Identity.IsAuthenticated)
                 {
-                    AlarmDefaultName = _alarmService.GenerateAlarmName(User.Identity.Name);
+                    _currentLanguage = _httpContextAccessor.HttpContext.GetRouteValue("lang") as string;
+                    AlarmDefaultName = _alarmService.GenerateAlarmName(User.Identity.Name, _currentLanguage);
                 }
                 else
                 {

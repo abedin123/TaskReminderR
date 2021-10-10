@@ -12,7 +12,7 @@ namespace GenerateSuccess.Services
         public bool DateValidation(DateTime StartDate,DateTime EndDate,DateTime StartTime,DateTime EndTime,string CreatedFor);
         public bool DateInThePast(DateTime StartDate, DateTime EndDate, DateTime StartTime,DateTime EndTime, string CreatedFor, int WhichDate);
         public bool CorrectType(int Minutes, int Hours);
-        public string GenerateTaskName(string UserName);
+        public string GenerateTaskName(string UserName,string Language);
         public TaskDB AddTask(NewTaskVM model, string User);
         public TaskDB SaveTaskChanges(NewTaskVM model, string User);
         public TaskDB SaveTaskChangesUnAuth(NewTaskVM model, List<TaskDB> list);

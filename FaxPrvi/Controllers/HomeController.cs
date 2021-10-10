@@ -45,7 +45,10 @@ namespace GenerateSuccess.Controllers
             int Minute = int.Parse((CurrentTime[14].ToString() + CurrentTime[15].ToString()));
             
             DateTime CurrentRealTime = new DateTime(Year, Month, Day, Hour, Minute, 0);
-            
+            if (CurrentRealTime.ToShortDateString().Contains("2564") || CurrentRealTime.ToShortDateString().Contains("2565"))
+            {
+                CurrentRealTime = CurrentRealTime.AddYears(-543);
+            }
             return CurrentRealTime;
         }
 
@@ -78,11 +81,8 @@ namespace GenerateSuccess.Controllers
         public IActionResult RedirectToDefaultLanguage()
         {
             var lang = CurrentLanguage;
-            if (string.IsNullOrEmpty(lang))
-            {
-                return NotFound();
-            }
-            if (lang != "en-US" && lang !="ja-JP")
+            
+            if (lang != "en-US" && lang !="ja-JP"&&lang!= "th-TH" && lang != "pt-BR" && lang != "vi-VN" && lang != "uk-UA")
             {
                 lang = "en-US";
             }
@@ -127,7 +127,7 @@ namespace GenerateSuccess.Controllers
 
                     string CurrentZone = null;
                     CurrentZone = Request.Cookies["TimeZone"];
-                    DateTime CurrentRealTime = DateTime.Now;
+                    DateTime CurrentRealTime= DateTime.Now;
                     if (CurrentZone != null)
                     {
                         CurrentRealTime = GetDateTimeObject(CurrentZone);
@@ -161,6 +161,11 @@ namespace GenerateSuccess.Controllers
                         To = currentmainhome.To,
                         W = currentmainhome.W
                     };
+                    if (filter.From.ToShortDateString().Contains("2564") || filter.From.ToShortDateString().Contains("2565"))
+                    {
+                        filter.From = filter.From.AddYears(-543);
+                        filter.To = filter.To.AddYears(-543);
+                    }
                     List<TaskPreviewVM> tasklist;
                     List<AlarmPreviewVM> alarmlist;
                     if (User.Identity.IsAuthenticated)
@@ -205,7 +210,12 @@ namespace GenerateSuccess.Controllers
                     
                     ForSend.Success = _taskservice.SuccessNumber(currenttasklist);
                     MainHomePreviewVM forreturn = new MainHomePreviewVM();
-                    forreturn = ForSend;                   
+                    forreturn = ForSend;
+                    if(forreturn.From.ToShortDateString().Contains("2564")|| forreturn.From.ToShortDateString().Contains("2565"))
+                    {
+                        forreturn.From = forreturn.From.AddYears(-543);
+                        forreturn.To = forreturn.To.AddYears(-543);
+                    }
                     if (User.Identity.IsAuthenticated)
                     {
                         MainNotificationVM notdiv = new MainNotificationVM();
@@ -300,6 +310,11 @@ namespace GenerateSuccess.Controllers
                         To = currentmainhome.To,
                         W = currentmainhome.W
                     };
+                    if (filter.From.ToShortDateString().Contains("2564") || filter.From.ToShortDateString().Contains("2565"))
+                    {
+                        filter.From = filter.From.AddYears(-543);
+                        filter.To = filter.To.AddYears(-543);
+                    }
                     List<TaskPreviewVM> tasklist;
                     List<AlarmPreviewVM> alarmlist;
                     if (User.Identity.IsAuthenticated)
@@ -345,6 +360,11 @@ namespace GenerateSuccess.Controllers
                     ForSend.Success = _taskservice.SuccessNumber(currenttasklist);
                     MainHomePreviewVM forreturn = new MainHomePreviewVM();
                     forreturn = ForSend;
+                    if (forreturn.From.ToShortDateString().Contains("2564") || forreturn.From.ToShortDateString().Contains("2565"))
+                    {
+                        forreturn.From = forreturn.From.AddYears(-543);
+                        forreturn.To = forreturn.To.AddYears(-543);
+                    }
                     if (User.Identity.IsAuthenticated)
                     {
                         MainNotificationVM notdiv = new MainNotificationVM();
@@ -448,6 +468,11 @@ namespace GenerateSuccess.Controllers
                         To = currentmainhome.To,
                         W = currentmainhome.W
                     };
+                    if (filter.From.ToShortDateString().Contains("2564") || filter.From.ToShortDateString().Contains("2565"))
+                    {
+                        filter.From = filter.From.AddYears(-543);
+                        filter.To = filter.To.AddYears(-543);
+                    }
                     List<TaskPreviewVM> tasklist;
                     List<AlarmPreviewVM> alarmlist;
                     if (User.Identity.IsAuthenticated)
@@ -493,6 +518,11 @@ namespace GenerateSuccess.Controllers
                     ForSend.Success = _taskservice.SuccessNumber(currenttasklist);
                     MainHomePreviewVM forreturn = new MainHomePreviewVM();
                     forreturn = ForSend;
+                    if (forreturn.From.ToShortDateString().Contains("2564") || forreturn.From.ToShortDateString().Contains("2565"))
+                    {
+                        forreturn.From = forreturn.From.AddYears(-543);
+                        forreturn.To = forreturn.To.AddYears(-543);
+                    }
                     if (User.Identity.IsAuthenticated)
                     {
                         MainNotificationVM notdiv = new MainNotificationVM();
@@ -596,6 +626,11 @@ namespace GenerateSuccess.Controllers
                         To = currentmainhome.To,
                         W = currentmainhome.W
                     };
+                    if (filter.From.ToShortDateString().Contains("2564") || filter.From.ToShortDateString().Contains("2565"))
+                    {
+                        filter.From = filter.From.AddYears(-543);
+                        filter.To = filter.To.AddYears(-543);
+                    }
                     List<TaskPreviewVM> tasklist;
                     List<AlarmPreviewVM> alarmlist;
                     if (User.Identity.IsAuthenticated)
@@ -641,6 +676,11 @@ namespace GenerateSuccess.Controllers
                     ForSend.Success = _taskservice.SuccessNumber(currenttasklist);
                     MainHomePreviewVM forreturn = new MainHomePreviewVM();
                     forreturn = ForSend;
+                    if (forreturn.From.ToShortDateString().Contains("2564") || forreturn.From.ToShortDateString().Contains("2565"))
+                    {
+                        forreturn.From = forreturn.From.AddYears(-543);
+                        forreturn.To = forreturn.To.AddYears(-543);
+                    }
                     if (User.Identity.IsAuthenticated)
                     {
                         MainNotificationVM notdiv = new MainNotificationVM();
@@ -746,6 +786,11 @@ namespace GenerateSuccess.Controllers
                         To = currentmainhome.To,
                         W = currentmainhome.W
                     };
+                    if (filter.From.ToShortDateString().Contains("2564") || filter.From.ToShortDateString().Contains("2565"))
+                    {
+                        filter.From = filter.From.AddYears(-543);
+                        filter.To = filter.To.AddYears(-543);
+                    }
                     List<TaskPreviewVM> tasklist;
                     List<AlarmPreviewVM> alarmlist;
                     if (User.Identity.IsAuthenticated)
@@ -788,6 +833,11 @@ namespace GenerateSuccess.Controllers
                     ForSend.Success = _taskservice.SuccessNumber(currenttasklist);
                     MainHomePreviewVM forreturn = new MainHomePreviewVM();
                     forreturn = ForSend;
+                    if (forreturn.From.ToShortDateString().Contains("2564") || forreturn.From.ToShortDateString().Contains("2565"))
+                    {
+                        forreturn.From = forreturn.From.AddYears(-543);
+                        forreturn.To = forreturn.To.AddYears(-543);
+                    }
                     if (User.Identity.IsAuthenticated)
                     {
                         MainNotificationVM notdiv = new MainNotificationVM();
@@ -882,7 +932,12 @@ namespace GenerateSuccess.Controllers
                         Th = currentmainhome.Th,
                         To = currentmainhome.To,
                         W = currentmainhome.W
-                    };
+                    }; 
+                    if (filter.From.ToShortDateString().Contains("2564") || filter.From.ToShortDateString().Contains("2565"))
+                    {
+                        filter.From = filter.From.AddYears(-543);
+                        filter.To = filter.To.AddYears(-543);
+                    }
                     List<TaskPreviewVM> tasklist;
                     List<AlarmPreviewVM> alarmlist;
                     if (User.Identity.IsAuthenticated)
@@ -928,6 +983,11 @@ namespace GenerateSuccess.Controllers
                     ForSend.Success = _taskservice.SuccessNumber(currenttasklist);
                     MainHomePreviewVM forreturn = new MainHomePreviewVM();
                     forreturn = ForSend;
+                    if (forreturn.From.ToShortDateString().Contains("2564") || forreturn.From.ToShortDateString().Contains("2565"))
+                    {
+                        forreturn.From = forreturn.From.AddYears(-543);
+                        forreturn.To = forreturn.To.AddYears(-543);
+                    }
                     if (User.Identity.IsAuthenticated)
                     {
                         MainNotificationVM notdiv = new MainNotificationVM();
@@ -1015,6 +1075,11 @@ namespace GenerateSuccess.Controllers
                         To = currentmainhome.To,
                         W = currentmainhome.W
                     };
+                    if (filter.From.ToShortDateString().Contains("2564") || filter.From.ToShortDateString().Contains("2565"))
+                    {
+                        filter.From = filter.From.AddYears(-543);
+                        filter.To = filter.To.AddYears(-543);
+                    }
                     List<TaskPreviewVM> tasklist;
                     List<AlarmPreviewVM> alarmlist;
                     if (User.Identity.IsAuthenticated)
@@ -1057,6 +1122,11 @@ namespace GenerateSuccess.Controllers
                     ForSend.Success = _taskservice.SuccessNumber(currenttasklist);
                     MainHomePreviewVM forreturn = new MainHomePreviewVM();
                     forreturn = ForSend;
+                    if (forreturn.From.ToShortDateString().Contains("2564") || forreturn.From.ToShortDateString().Contains("2565"))
+                    {
+                        forreturn.From = forreturn.From.AddYears(-543);
+                        forreturn.To = forreturn.To.AddYears(-543);
+                    }
                     if (User.Identity.IsAuthenticated)
                     {
                         MainNotificationVM notdiv = new MainNotificationVM();

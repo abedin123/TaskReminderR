@@ -1,4 +1,6 @@
-﻿@model GenerateSuccess.ViewModels.MainHomePreviewVM
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model GenerateSuccess.ViewModels.MainHomePreviewVM
 
 
 <div id="mainnotificationdiv" style="display:none;">
@@ -70,29 +72,29 @@
 <div id="parentmainmobilediv">
     <div class="mainmobilediv">
         <div class="addnewtaskalarmparent">
-            <a href="/Alarm/NewAlarmMobile" class="btn addnewtaskalarm">New alarm</a>
+            <a asp-controller="Alarm" asp-action="NewAlarmMobile" class="btn addnewtaskalarm">@Localizer["1"]</a>
         </div>
         <div class="smallsearchrightdiv">
-            <button id="filtertexttwo" class="smallsearchfiltertext" onclick="Close1()">Filter</button>
+            <button id="filtertexttwo" class="smallsearchfiltertext" onclick="Close1()">@Localizer["2"]</button>
         </div>
         <div id="smallsearchdivright">
             <div id="rightsearchdivsmall" class="col-lg-4 col-md-12 searchtaskchilddiv">
-                <form action="/Home/AlarmSearchMobile">
-                    <span class="researchtext">Search by:</span><br />
+                <form asp-controller="Home" asp-action="AlarmSearchMobile" method="get">
+                    <span class="researchtext">@Localizer["3"]:</span><br />
                     <div id="status">
-                        <span class="researchtext status">Status:</span>
+                        <span class="researchtext status">@Localizer["4"]:</span>
                         <div class="sel sel--black-panther rightdivsearch">
                             <span class="arroww"></span>
                             <select name="AlarmStatus" asp-for="AlarmStatus" class="smallprofessionselectalarm">
-                                <option value="0">All</option>
-                                <option value="1">All</option>
-                                <option value="2">Active</option>
-                                <option value="3">Inactive</option>
+                                <option value="0">@Localizer["5"]</option>
+                                <option value="1">@Localizer["5"]</option>
+                                <option value="2">@Localizer["6"]</option>
+                                <option value="3">@Localizer["7"]</option>
                             </select>
                         </div>
                     </div>
                     <div id="daysearch">
-                        <span class="researchtext status">Day:</span><br />
+                        <span class="researchtext status">@Localizer["8"]:</span><br />
                         <div id="customcreateforright">
                             <div class="weekDays-selector">
                                 @if (Model.M == "true")
@@ -103,7 +105,7 @@
                                 {
                                     <input type="checkbox" id="weekday-mon" class="weekday" asp-for="M" name="M" />
                                 }
-                                <label for="weekday-mon">Mon</label>
+                                <label for="weekday-mon">@Localizer["Mon"]</label>
                                 @if (Model.T == "true")
                                 {
                                     <input type="checkbox" id="weekday-tue" class="weekday" asp-for="T" name="T" checked />
@@ -112,7 +114,7 @@
                                 {
                                     <input type="checkbox" id="weekday-tue" class="weekday" asp-for="T" name="T" />
                                 }
-                                <label for="weekday-tue">Tue</label>
+                                <label for="weekday-tue">@Localizer["Tue"]</label>
                                 @if (Model.W == "true")
                                 {
                                     <input type="checkbox" id="weekday-wed" class="weekday" asp-for="W" name="W" checked />
@@ -121,7 +123,7 @@
                                 {
                                     <input type="checkbox" id="weekday-wed" class="weekday" asp-for="W" name="W" />
                                 }
-                                <label for="weekday-wed">Wed</label>
+                                <label for="weekday-wed">@Localizer["Wed"]</label>
                                 @if (Model.Th == "true")
                                 {
                                     <input type="checkbox" id="weekday-thu" class="weekday" asp-for="Th" name="Th" checked />
@@ -130,7 +132,7 @@
                                 {
                                     <input type="checkbox" id="weekday-thu" class="weekday" asp-for="Th" name="Th" />
                                 }
-                                <label for="weekday-thu">Thu</label>
+                                <label for="weekday-thu">@Localizer["Thu"]</label>
                                 @if (Model.F == "true")
                                 {
                                     <input type="checkbox" id="weekday-fri" class="weekday" asp-for="F" name="F" checked />
@@ -139,7 +141,7 @@
                                 {
                                     <input type="checkbox" id="weekday-fri" class="weekday" asp-for="F" name="F" />
                                 }
-                                <label for="weekday-fri">Fri</label>
+                                <label for="weekday-fri">@Localizer["Fri"]</label>
                                 @if (Model.Sa == "true")
                                 {
                                     <input type="checkbox" id="weekday-sat" class="weekday" asp-for="Sa" name="Sa" checked />
@@ -148,7 +150,7 @@
                                 {
                                     <input type="checkbox" id="weekday-sat" class="weekday" asp-for="Sa" name="Sa" />
                                 }
-                                <label for="weekday-sat">Sat</label>
+                                <label for="weekday-sat">@Localizer["Sat"]</label>
                                 @if (Model.S == "true")
                                 {
                                     <input type="checkbox" id="weekday-sun" class="weekday" asp-for="S" name="S" checked />
@@ -157,12 +159,12 @@
                                 {
                                     <input type="checkbox" id="weekday-sun" class="weekday" asp-for="S" name="S" />
                                 }
-                                <label for="weekday-sun">Sun</label>
+                                <label for="weekday-sun">@Localizer["Sun"]</label>
                             </div>
                         </div>
                     </div>
                     <div class="btnsearchdiv">
-                        <button type="submit" class="btn btnsearch">Search</button>
+                        <button type="submit" class="btn btnsearch">@Localizer["9"]</button>
                     </div>
                 </form>
             </div>
@@ -179,9 +181,9 @@
                             {
                                 <div class="task">
                                     <div class="col-lg-10 col-md-10 parentmainsearchdiv">
-                                        <div class="statusdiv"><span class="statustext">Status:</span><span class="statusundertext">@item.Status</span></div>
+                                        <div class="statusdiv"><span class="statustext">@Localizer["4"]:</span><span class="statusundertext">@Localizer[@item.Status]</span></div>
                                         <div class="maintaskdiv"><span class="nameofthetask">@item.AlarmName</span></div>
-                                        <div class="prioritytaskdiv"><span class="prirotytext">@item.DateDayStarting</span><span class="priorityundertext">@item.TimeStarting</span></div>
+                                        <div class="prioritytaskdiv"><span class="prirotytext">@Localizer[@item.DateDayStarting]</span><span class="priorityundertext">@item.TimeStarting</span></div>
                                     </div>
                                     <div class="editdeletetaskdiv">
                                         <form asp-controller="Alarm" asp-action="EditAlarmMobile" method="post">

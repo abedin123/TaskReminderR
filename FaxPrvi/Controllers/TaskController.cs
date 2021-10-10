@@ -12,6 +12,7 @@ using GenerateSuccess.Models;
 using Newtonsoft.Json;
 using TimeZoneConverter;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 
 namespace GenerateSuccess.Controllers
 {
@@ -21,12 +22,41 @@ namespace GenerateSuccess.Controllers
         private List<TaskDB> TaskList=new List<TaskDB>();
 
         private readonly ITaskService _taskService;
+        private string _currentLanguage;
+        private IHttpContextAccessor _httpContextAccessor;
 
         private int numberoftasks = 0;
 
-        public TaskController(ITaskService taskService)
+        public TaskController(ITaskService taskService, IHttpContextAccessor httpContextAccessor)
         {
             _taskService = taskService;
+            _httpContextAccessor = httpContextAccessor;
+        }
+
+        public IActionResult RedirectToDefaultLanguage()
+        {
+            var lang = CurrentLanguage;
+
+            if (lang != "en-US" && lang != "ja-JP" && lang != "th-TH" && lang != "pt-BR" && lang != "vi-VN" && lang != "uk-UA")
+            {
+                lang = "en-US";
+            }
+
+
+            return RedirectToAction("Index", new { lang = lang });
+        }
+
+        private string CurrentLanguage
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(_currentLanguage))
+                {
+                    return _currentLanguage;
+                }
+
+                return _currentLanguage;
+            }
         }
 
         private bool IfExistName(List<TaskDB> list, string name)
@@ -43,20 +73,41 @@ namespace GenerateSuccess.Controllers
 
         private string GenerateTaskName()
         {
+            _currentLanguage = _httpContextAccessor.HttpContext.GetRouteValue("lang") as string;
             numberoftasks = TaskList.Count;
             string name = "Activity";
+            if (_currentLanguage == "ja-JP")
+            {
+                name = "アクティビティ";
+            }
+            if (_currentLanguage == "th-TH")
+            {
+                name = "กิจกรรม";
+            }
+            if (_currentLanguage == "pt-BR")
+            {
+                name = "Atividade";
+            }
+            if (_currentLanguage == "vi-VN")
+            {
+                name = "Hoạt động";
+            }
+            if (_currentLanguage == "uk-UA")
+            {
+                name = "Діяльність";
+            }
             if (numberoftasks >= 1)
             {
                 name += "[" + (numberoftasks + 1).ToString() + "]";
             }
             else
             {
-                name = "Activity[1]";
+                name += "[1]";
             }
             while (IfExistName(TaskList, name))
             {
                 numberoftasks++;
-                name = "Activity[" + (numberoftasks + 1).ToString() + "]";
+                name += "[" + (numberoftasks + 1).ToString() + "]";
             }
             return name;
         }
@@ -97,9 +148,11 @@ namespace GenerateSuccess.Controllers
             int Year = int.Parse((CurrentTime[6].ToString() + CurrentTime[7].ToString() + CurrentTime[8].ToString() + CurrentTime[9].ToString()));
             int Hour = int.Parse((CurrentTime[11].ToString() + CurrentTime[12].ToString()));
             int Minute = int.Parse((CurrentTime[14].ToString() + CurrentTime[15].ToString()));
-
             DateTime CurrentRealTime = new DateTime(Year, Month, Day, Hour, Minute, 0);
-
+            if (CurrentRealTime.ToShortDateString().Contains("2564")|| CurrentRealTime.ToShortDateString().Contains("2565"))
+            {
+                CurrentRealTime = CurrentRealTime.AddYears(-543);
+            }
             _taskService.SetCurrentTime(CurrentRealTime);
             
             return CurrentRealTime;
@@ -109,19 +162,65 @@ namespace GenerateSuccess.Controllers
         public IActionResult DateVal(DateTime StartDate, DateTime EndDate, DateTime StartTimeOnce, DateTime EndTimeOnce, DateTime StartTimeCustom, DateTime EndTimeCustom, string CreatedFor)
         {
             DateTime Curr=InitialCurrentTime();
-
+            _currentLanguage = _httpContextAccessor.HttpContext.GetRouteValue("lang") as string;
             if (CreatedFor == "1")
             {
                 if (!_taskService.DateValidation(StartDate, EndDate, StartTimeOnce, EndTimeOnce, CreatedFor))
                 {
-                    return Json($"Start time can't be same or higher than end time!");
+                    if (_currentLanguage == "en-US")
+                    {
+                        return Json($"Start time can't be same or higher than end time!");
+                    }
+                    if (_currentLanguage == "ja-JP")
+                    {
+                        return Json($"開始時間は終了時間と同じまたはそれより長くすることはできません！");
+                    }
+                    if (_currentLanguage == "th-TH")
+                    {
+                        return Json($"เวลาเริ่มต้นต้องไม่เท่ากันหรือสูงกว่าเวลาสิ้นสุด!");
+                    }
+                    if (_currentLanguage == "pt-BR")
+                    {
+                        return Json($"A hora de início não pode ser igual ou superior à hora de término!");
+                    }
+                    if (_currentLanguage == "vi-VN")
+                    {
+                        return Json($"Thời gian bắt đầu không được bằng hoặc cao hơn thời gian kết thúc!");
+                    }
+                    if (_currentLanguage == "uk-UA")
+                    {
+                        return Json($"Час початку не може бути таким самим або вищим за час закінчення!");
+                    }
                 }
             }
             if (CreatedFor == "2")
             {
                 if (!_taskService.DateValidation(StartDate, EndDate, StartTimeCustom, EndTimeCustom, CreatedFor))
                 {
-                    return Json($"Start time can't be same or higher than end time!");
+                    if (_currentLanguage == "en-US")
+                    {
+                        return Json($"Start time can't be same or higher than end time!");
+                    }
+                    if (_currentLanguage == "ja-JP")
+                    {
+                        return Json($"開始時間は終了時間と同じまたはそれより長くすることはできません！");
+                    }
+                    if (_currentLanguage == "th-TH")
+                    {
+                        return Json($"เวลาเริ่มต้นต้องไม่เท่ากันหรือสูงกว่าเวลาสิ้นสุด!");
+                    }
+                    if (_currentLanguage == "pt-BR")
+                    {
+                        return Json($"A hora de início não pode ser igual ou superior à hora de término!");
+                    }
+                    if (_currentLanguage == "vi-VN")
+                    {
+                        return Json($"Thời gian bắt đầu không được bằng hoặc cao hơn thời gian kết thúc!");
+                    }
+                    if (_currentLanguage == "uk-UA")
+                    {
+                        return Json($"Час початку не може бути таким самим або вищим за час закінчення!");
+                    }
                 }
             }
 
@@ -129,7 +228,30 @@ namespace GenerateSuccess.Controllers
             {
                 if (!_taskService.DateInThePast(StartDate, EndDate, StartTimeOnce, EndTimeOnce, CreatedFor, 0))
                 {
-                    return Json($"Date can't be in the past!");
+                    if (_currentLanguage == "en-US")
+                    {
+                        return Json($"Date can't be in the past!");
+                    }
+                    if (_currentLanguage == "ja-JP")
+                    {
+                        return Json($"日付は過去にすることはできません！");
+                    }
+                    if (_currentLanguage == "th-TH")
+                    {
+                        return Json($"วันที่ต้องไม่ผ่าน!");
+                    }
+                    if (_currentLanguage == "pt-BR")
+                    {
+                        return Json($"A data não pode estar no passado!");
+                    }
+                    if (_currentLanguage == "vi-VN")
+                    {
+                        return Json($"Ngày không thể là quá khứ!");
+                    }
+                    if (_currentLanguage == "uk-UA")
+                    {
+                        return Json($"Дата не може бути в минулому!");
+                    }
                 }
             }
             return Json(true);
@@ -139,18 +261,65 @@ namespace GenerateSuccess.Controllers
         public IActionResult EndDateVal(DateTime StartDate, DateTime EndDate, DateTime StartTimeOnce, DateTime EndTimeOnce, DateTime StartTimeCustom, DateTime EndTimeCustom, string CreatedFor)
         {
             DateTime Curr=InitialCurrentTime();
+            _currentLanguage = _httpContextAccessor.HttpContext.GetRouteValue("lang") as string;
             if (CreatedFor == "1")
             {
                 if (!_taskService.DateValidation(StartDate, EndDate, StartTimeOnce, EndTimeOnce, CreatedFor))
                 {
-                    return Json($"End time can't be same or lower than start time!");
+                    if (_currentLanguage == "en-US")
+                    {
+                        return Json($"End time can't be same or lower than start time!");
+                    }
+                    if (_currentLanguage == "ja-JP")
+                    {
+                        return Json($"終了時間は開始時間と同じまたはそれより短くすることはできません！");
+                    }
+                    if (_currentLanguage == "th-TH")
+                    {
+                        return Json($"เวลาสิ้นสุดต้องไม่เท่ากันหรือต่ำกว่าเวลาเริ่มต้น!");
+                    }
+                    if (_currentLanguage == "pt-BR")
+                    {
+                        return Json($"O horário de término não pode ser igual ou inferior ao horário de início!");
+                    }
+                    if (_currentLanguage == "vi-VN")
+                    {
+                        return Json($"Thời gian kết thúc không được giống hoặc thấp hơn thời gian bắt đầu!");
+                    }
+                    if (_currentLanguage == "uk-UA")
+                    {
+                        return Json($"Час завершення не може бути таким самим або меншим за час початку!");
+                    }
                 }
             }
             if (CreatedFor == "2")
             {
                 if (!_taskService.DateValidation(StartDate, EndDate, StartTimeCustom, EndTimeCustom, CreatedFor))
                 {
-                    return Json($"End time can't be same or lower than start time!");
+                    if (_currentLanguage == "en-US")
+                    {
+                        return Json($"End time can't be same or lower than start time!");
+                    }
+                    if (_currentLanguage == "ja-JP")
+                    {
+                        return Json($"終了時間は開始時間と同じまたはそれより短くすることはできません！");
+                    }
+                    if (_currentLanguage == "th-TH")
+                    {
+                        return Json($"เวลาสิ้นสุดต้องไม่เท่ากันหรือต่ำกว่าเวลาเริ่มต้น!");
+                    }
+                    if (_currentLanguage == "pt-BR")
+                    {
+                        return Json($"O horário de término não pode ser igual ou inferior ao horário de início!");
+                    }
+                    if (_currentLanguage == "vi-VN")
+                    {
+                        return Json($"Thời gian kết thúc không được giống hoặc thấp hơn thời gian bắt đầu!");
+                    }
+                    if (_currentLanguage == "uk-UA")
+                    {
+                        return Json($"Час завершення не може бути таким самим або меншим за час початку!");
+                    }
                 }
             }
 
@@ -158,7 +327,30 @@ namespace GenerateSuccess.Controllers
             {
                 if (!_taskService.DateInThePast(StartDate, EndDate, StartTimeOnce, EndTimeOnce, CreatedFor, 1))
                 {
-                    return Json($"Date can't be in the past!");
+                    if (_currentLanguage == "en-US")
+                    {
+                        return Json($"Date can't be in the past!");
+                    }
+                    if (_currentLanguage == "ja-JP")
+                    {
+                        return Json($"日付は過去にすることはできません！");
+                    }
+                    if (_currentLanguage == "th-TH")
+                    {
+                        return Json($"วันที่ต้องไม่ผ่าน!");
+                    }
+                    if (_currentLanguage == "pt-BR")
+                    {
+                        return Json($"A data não pode estar no passado!");
+                    }
+                    if (_currentLanguage == "vi-VN")
+                    {
+                        return Json($"Ngày không thể là quá khứ!");
+                    }
+                    if (_currentLanguage == "uk-UA")
+                    {
+                        return Json($"Дата не може бути в минулому!");
+                    }
                 }
             }
             return Json(true);
@@ -167,17 +359,87 @@ namespace GenerateSuccess.Controllers
         [AcceptVerbs("GET", "POST")]
         public IActionResult TimeValHours(int Hours,int Minutes)
         {
-            if(Hours==0&& Minutes == 0)
+            _currentLanguage = _httpContextAccessor.HttpContext.GetRouteValue("lang") as string;
+            if (Hours==0&& Minutes == 0)
             {
-                return Json($"Notification can't be every 0 minutes!");
+                if (_currentLanguage == "en-US")
+                {
+                    return Json($"Notification can't be every 0 minutes!");
+                }
+                if (_currentLanguage == "ja-JP")
+                {
+                    return Json($"通知は0分ごとにすることはできません！");
+                }
+                if (_currentLanguage == "th-TH")
+                {
+                    return Json($"การแจ้งเตือนต้องไม่ทุก 0 นาที!");
+                }
+                if (_currentLanguage == "pt-BR")
+                {
+                    return Json($"A notificação não pode ser a cada 0 minutos!");
+                }
+                if (_currentLanguage == "vi-VN")
+                {
+                    return Json($"Thông báo không thể cứ 0 phút một lần!");
+                }
+                if (_currentLanguage == "uk-UA")
+                {
+                    return Json($"Повідомлення не може надходити кожні 0 хвилин!");
+                }
             }
             if (Hours < 0)
             {
-                return Json($"This field cannot be negative!");
+                if (_currentLanguage == "en-US")
+                {
+                    return Json($"This field cannot be negative!");
+                }
+                if (_currentLanguage == "ja-JP")
+                {
+                    return Json($"このフィールドを負にすることはできません!");
+                }
+                if (_currentLanguage == "th-TH")
+                {
+                    return Json($"ฟิลด์นี้ไม่สามารถเป็นค่าลบได้!");
+                }
+                if (_currentLanguage == "pt-BR")
+                {
+                    return Json($"Este campo não pode ser negativo!");
+                }
+                if (_currentLanguage == "vi-VN")
+                {
+                    return Json($"Trường này không được âm!");
+                }
+                if (_currentLanguage == "uk-UA")
+                {
+                    return Json($"Це поле не може бути негативним!");
+                }
             }
             if (Hours > 500)
             {
-                return Json($"This field cannot have a value greater than 500!");
+                if (_currentLanguage == "en-US")
+                {
+                    return Json($"This field cannot have a value greater than 500!");
+                }
+                if (_currentLanguage == "ja-JP")
+                {
+                    return Json($"このフィールドの値を500より大きくすることはできません!");
+                }
+                if (_currentLanguage == "th-TH")
+                {
+                    return Json($"ฟิลด์นี้ไม่สามารถมีค่ามากกว่า 500!");
+                }
+                if (_currentLanguage == "pt-BR")
+                {
+                    return Json($"Este campo não pode ter um valor maior que 500!");
+                }
+                if (_currentLanguage == "vi-VN")
+                {
+                    return Json($"Trường này không được có giá trị lớn hơn 500!");
+                }
+                if (_currentLanguage == "uk-UA")
+                {
+                    return Json($"Це поле не може мати значення більше 500!");
+                }
             }
             return Json(true);
         }
@@ -185,13 +447,60 @@ namespace GenerateSuccess.Controllers
         [AcceptVerbs("GET", "POST")]
         public IActionResult TimeValMinutes(int Minutes)
         {
+            _currentLanguage = _httpContextAccessor.HttpContext.GetRouteValue("lang") as string;
             if (Minutes < 0)
             {
-                return Json($"This field cannot be negative!");
+                if (_currentLanguage == "en-US")
+                {
+                    return Json($"This field cannot be negative!");
+                }
+                if (_currentLanguage == "ja-JP")
+                {
+                    return Json($"このフィールドを負にすることはできません!");
+                }
+                if (_currentLanguage == "th-TH")
+                {
+                    return Json($"ฟิลด์นี้ไม่สามารถเป็นค่าลบได้!");
+                }
+                if (_currentLanguage == "pt-BR")
+                {
+                    return Json($"Este campo não pode ser negativo!");
+                }
+                if (_currentLanguage == "vi-VN")
+                {
+                    return Json($"Trường này không được âm!");
+                }
+                if (_currentLanguage == "uk-UA")
+                {
+                    return Json($"Це поле не може бути негативним!");
+                }
             }
             if (Minutes > 500)
             {
-                return Json($"This field cannot have a value greater than 500!");
+                if (_currentLanguage == "en-US")
+                {
+                    return Json($"This field cannot have a value greater than 500!");
+                }
+                if (_currentLanguage == "ja-JP")
+                {
+                    return Json($"このフィールドの値を500より大きくすることはできません!");
+                }
+                if (_currentLanguage == "th-TH")
+                {
+                    return Json($"ฟิลด์นี้ไม่สามารถมีค่ามากกว่า 500!");
+                }
+                if (_currentLanguage == "pt-BR")
+                {
+                    return Json($"Este campo não pode ter um valor maior que 500!");
+                }
+                if (_currentLanguage == "vi-VN")
+                {
+                    return Json($"Trường này không được có giá trị lớn hơn 500!");
+                }
+                if (_currentLanguage == "uk-UA")
+                {
+                    return Json($"Це поле не може мати значення більше 500!");
+                }
             }
             return Json(true);
         }
@@ -491,7 +800,8 @@ namespace GenerateSuccess.Controllers
                 string TaskDefaultName = "";
                 if (User.Identity.IsAuthenticated)
                 {
-                    TaskDefaultName = _taskService.GenerateTaskName(User.Identity.Name);
+                    _currentLanguage = _httpContextAccessor.HttpContext.GetRouteValue("lang") as string;
+                    TaskDefaultName = _taskService.GenerateTaskName(User.Identity.Name, _currentLanguage);
                 }
                 else
                 {
@@ -526,7 +836,8 @@ namespace GenerateSuccess.Controllers
                 string TaskDefaultName = "";
                 if (User.Identity.IsAuthenticated)
                 {
-                    TaskDefaultName = _taskService.GenerateTaskName(User.Identity.Name);
+                    _currentLanguage = _httpContextAccessor.HttpContext.GetRouteValue("lang") as string;
+                    TaskDefaultName = _taskService.GenerateTaskName(User.Identity.Name, _currentLanguage);
                 }
                 else
                 {

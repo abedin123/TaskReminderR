@@ -9,15 +9,16 @@ namespace GenerateSuccess.ViewModels
 {
     public class LoginVM
     {
-        [Required(ErrorMessage = "This field is required!")]
-        [MaxLength(30, ErrorMessage = "Max length of username field is 30!")]
+        [Required(ErrorMessage = "Required")]
+        [MaxLength(30, ErrorMessage = "2")]
+        [DataType(DataType.Text, ErrorMessage = "8")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "This field is required!")]
-        [MaxLength(50, ErrorMessage = "Max length of password field is 50!")]
+        [Required(ErrorMessage = "Required")]
+        [MaxLength(50, ErrorMessage = "4")]
+        [DataType(DataType.Text, ErrorMessage = "8")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember Me")]
         public bool RememberMe { get; set; }
 
         public string Uncorrectdetails { get; set; }

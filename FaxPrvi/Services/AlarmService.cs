@@ -118,9 +118,29 @@ namespace GenerateSuccess.Services
             return model;
         }
 
-        private string GenerateName(int numberoftasks)
+        private string GenerateName(int numberoftasks,string Lang)
         {
             string name = "Alarm";
+            if (Lang == "ja-JP")
+            {
+                name = "警報";
+            }
+            if (Lang == "th-TH")
+            {
+                name = "เตือน";
+            }
+            if (Lang == "pt-BR")
+            {
+                name = "Alarme";
+            }
+            if (Lang == "vi-VN")
+            {
+                name = "Báo thức";
+            }
+            if (Lang == "uk-UA")
+            {
+                name = "Сигналізація";
+            }
             name += "[" + (numberoftasks + 1).ToString() + "]";
             return name;
         }
@@ -137,10 +157,30 @@ namespace GenerateSuccess.Services
             return false;
         }
 
-        public string GenerateAlarmName(string UserName)
+        public string GenerateAlarmName(string UserName,string Language)
         {
             var listofalarms= _context.UserAlarm.Include(a => a.User).Include(a=>a.Alarms).Where(a => a.User.UserName == UserName).ToList();
             string name = "Alarm";
+            if (Language == "ja-JP")
+            {
+                name = "警報";
+            }
+            if (Language == "th-TH")
+            {
+                name = "เตือน";
+            }
+            if (Language == "pt-BR")
+            {
+                name = "Alarme";
+            }
+            if (Language == "vi-VN")
+            {
+                name = "Báo thức";
+            }
+            if (Language == "uk-UA")
+            {
+                name = "Сигналізація";
+            }
             int numberoftasks = listofalarms.Count();
             if (numberoftasks >= 1)
             {
@@ -148,12 +188,12 @@ namespace GenerateSuccess.Services
             }
             else
             {
-                name= "Alarm[1]";
+                name+= "[1]";
             }
             while (IfExist(listofalarms,name)==true)
             {
                 numberoftasks++;
-                name = GenerateName(numberoftasks);
+                name = GenerateName(numberoftasks,Language);
             }
 
 

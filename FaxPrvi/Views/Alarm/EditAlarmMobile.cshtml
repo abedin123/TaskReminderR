@@ -1,43 +1,45 @@
-﻿@model GenerateSuccess.ViewModels.NewAlarmVM
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model GenerateSuccess.ViewModels.NewAlarmVM
 
 <div id="addiv1"></div>
 <div id="addiv2"></div>
 <div id="adinarticle"></div>
 <div id="newtaskdiv" class="container col-lg-12">
     <div id="chilnewtaskdiv" class="alarmnewdiv">
-        <h3>Edit alarm</h3>
-        <form method="post" action="/Alarm/SaveAlarmChangesMobile" id="formid">
+        <h3>@Localizer["1"]</h3>
+        <form method="post" asp-controller="Alarm" asp-action="SaveAlarmChangesMobile" id="formid">
             <div class="inputdivparentname">
-                <input class="effect inputsearch newtaskinputname" type="text" placeholder="Alarm name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alarm name'" asp-for="AlarmName" name="AlarmName" />
+                <input class="effect inputsearch newtaskinputname" type="text" placeholder="@Localizer["2"]" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alarm name'" asp-for="AlarmName" name="AlarmName" />
                 <span asp-validation-for="AlarmName" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="@Model.Key" name="Key" readonly />
             <br />
-            
+
             <div id="createfor">
-                <span class="newtasktext">Create for:</span><br />
+                <span class="newtasktext">@Localizer["3"]:</span><br />
                 <select id="createforralarm" class="form-control dropdownn" asp-for="CreatedFor" name="CreatedFor">
                     @if (Model.CreatedFor == "1")
                     {
-                        <option value="1" selected>Once</option>
+                        <option value="1" selected>@Localizer["4"]</option>
                     }
                     else
                     {
-                        <option value="1">Once</option>
+                        <option value="1">@Localizer["4"]</option>
                     }
                     @if (Model.CreatedFor == "2")
                     {
-                        <option value="2" selected>Custom</option>
+                        <option value="2" selected>@Localizer["5"]</option>
                     }
                     else
                     {
-                        <option value="2">Custom</option>
+                        <option value="2">@Localizer["5"]</option>
                     }
                 </select>
                 <br />
                 <span asp-validation-for="CreatedFor" class="text-danger"></span>
                 <div id="customcreateforalarm">
-                    <span class="newtasktext">Days:</span>
+                    <span class="newtasktext">@Localizer["6"]:</span>
                     <br />
                     <br />
                     <div class="weekDays-selector">
@@ -49,7 +51,7 @@
                         {
                             <input type="checkbox" id="weekday-mona" class="weekday" name="M" asp-for="M" />
                         }
-                        <label for="weekday-mona">Mon</label>
+                        <label for="weekday-mona">@Localizer["Mon"]</label>
                         @if (Model.T == "true")
                         {
                             <input type="checkbox" id="weekday-tuea" class="weekday" name="T" asp-for="T" checked />
@@ -58,7 +60,7 @@
                         {
                             <input type="checkbox" id="weekday-tuea" class="weekday" name="T" asp-for="T" />
                         }
-                        <label for="weekday-tuea">Tue</label>
+                        <label for="weekday-tuea">@Localizer["Tue"]</label>
                         @if (Model.W == "true")
                         {
                             <input type="checkbox" id="weekday-weda" class="weekday" name="W" asp-for="W" checked />
@@ -67,7 +69,7 @@
                         {
                             <input type="checkbox" id="weekday-weda" class="weekday" name="W" asp-for="W" />
                         }
-                        <label for="weekday-weda">Wed</label>
+                        <label for="weekday-weda">@Localizer["Wed"]</label>
                         @if (Model.Th == "true")
                         {
                             <input type="checkbox" id="weekday-thua" class="weekday" name="Th" asp-for="Th" checked />
@@ -76,7 +78,7 @@
                         {
                             <input type="checkbox" id="weekday-thua" class="weekday" name="Th" asp-for="Th" />
                         }
-                        <label for="weekday-thua">Thu</label>
+                        <label for="weekday-thua">@Localizer["Thu"]</label>
                         @if (Model.F == "true")
                         {
                             <input type="checkbox" id="weekday-fria" class="weekday" name="F" asp-for="F" checked />
@@ -85,7 +87,7 @@
                         {
                             <input type="checkbox" id="weekday-fria" class="weekday" name="F" asp-for="F" />
                         }
-                        <label for="weekday-fria">Fri</label>
+                        <label for="weekday-fria">@Localizer["Fri"]</label>
                         @if (Model.Sa == "true")
                         {
                             <input type="checkbox" id="weekday-sata" class="weekday" name="Sa" asp-for="Sa" checked />
@@ -94,7 +96,7 @@
                         {
                             <input type="checkbox" id="weekday-sata" class="weekday" name="Sa" asp-for="Sa" />
                         }
-                        <label for="weekday-sata">Sat</label>
+                        <label for="weekday-sata">@Localizer["Sat"]</label>
                         @if (Model.S == "true")
                         {
                             <input type="checkbox" id="weekday-suna" class="weekday" name="S" asp-for="S" checked />
@@ -103,7 +105,7 @@
                         {
                             <input type="checkbox" id="weekday-suna" class="weekday" name="S" asp-for="S" />
                         }
-                        <label for="weekday-suna">Sun</label>
+                        <label for="weekday-suna">@Localizer["Sun"]</label>
                     </div>
                     <br />
                     <span id="daysvalalarm" asp-validation-for="M" class="text-danger"></span>
@@ -113,7 +115,7 @@
             <br />
             <div id="oncecreatedalarm">
                 <div id="startdiv" class="startenddiv">
-                    <span class="newtasktext">Ringing time:</span><br />
+                    <span class="newtasktext">@Localizer["7"]:</span><br />
                     <div class="childstartendtimediv">
                         <div class="startendtimediv" style="margin-left:0;">
                             <input type="time" class="startendtime" name="RingingTime" asp-for="RingingTime" asp-format="{0:HH:mm}" />
@@ -122,209 +124,209 @@
                 </div>
                 <br />
             </div>
-            <span class="newtasktext">Sound:</span>
+            <span class="newtasktext">@Localizer["8"]:</span>
             <select id="AlarmSound" class="form-control" asp-for="Sound" name="Sound">
                 @if (Model.Sound == "AlarmSound1")
                 {
-                    <option value="1" selected>Classic</option>
+                    <option value="1" selected>@Localizer["9"]</option>
                 }
                 else
                 {
-                    <option value="1">Classic</option>
+                    <option value="1">@Localizer["9"]</option>
                 }
                 @if (Model.Sound == "AlarmSound2")
                 {
-                    <option value="2" selected>Electronic</option>
+                    <option value="2" selected>@Localizer["10"]</option>
                 }
                 else
                 {
-                    <option value="2">Electronic</option>
+                    <option value="2">@Localizer["10"]</option>
                 }
                 @if (Model.Sound == "AlarmSound3")
                 {
-                    <option value="3" selected>Fast siren</option>
+                    <option value="3" selected>@Localizer["11"]</option>
                 }
                 else
                 {
-                    <option value="3">Fast siren</option>
+                    <option value="3">@Localizer["11"]</option>
                 }
                 @if (Model.Sound == "AlarmSound4")
                 {
-                    <option value="4" selected>Heavy metal</option>
+                    <option value="4" selected>@Localizer["12"]</option>
                 }
                 else
                 {
-                    <option value="4">Heavy metal</option>
+                    <option value="4">@Localizer["12"]</option>
                 }
                 @if (Model.Sound == "AlarmSound5")
                 {
-                    <option value="5" selected>Broken piano</option>
+                    <option value="5" selected>@Localizer["13"]</option>
                 }
                 else
                 {
-                    <option value="5">Broken piano</option>
+                    <option value="5">@Localizer["13"]</option>
                 }
                 @if (Model.Sound == "AlarmSound6")
                 {
-                    <option value="6" selected>Alert</option>
+                    <option value="6" selected>@Localizer["14"]</option>
                 }
                 else
                 {
-                    <option value="6">Alert</option>
+                    <option value="6">@Localizer["14"]</option>
                 }
                 @if (Model.Sound == "AlarmSound7")
                 {
-                    <option value="7" selected>Police siren</option>
+                    <option value="7" selected>@Localizer["15"]</option>
                 }
                 else
                 {
-                    <option value="7">Police siren</option>
+                    <option value="7">@Localizer["15"]</option>
                 }
             </select>
             <span asp-validation-for="Sound" class="text-danger"></span>
             <br />
-            <span class="newtasktext">Ringing duration (min):</span>
+            <span class="newtasktext">@Localizer["16"]</span>
             <select class="form-control" asp-for="RingingDuration" name="RingingDuration">
                 @if (Model.RingingDuration == "1")
                 {
-                    <option value="1" selected>1 minute</option>
+                    <option value="1" selected>@Localizer["17"]</option>
                 }
                 else
                 {
-                    <option value="1">1 minute</option>
+                    <option value="1">@Localizer["17"]</option>
                 }
                 @if (Model.RingingDuration == "3")
                 {
-                    <option value="3" selected>3 minutes</option>
+                    <option value="3" selected>@Localizer["18"]</option>
                 }
                 else
                 {
-                    <option value="3">3 minutes</option>
+                    <option value="3">@Localizer["18"]</option>
                 }
                 @if (Model.RingingDuration == "5")
                 {
-                    <option value="5" selected>5 minutes</option>
+                    <option value="5" selected>@Localizer["19"]</option>
                 }
                 else
                 {
-                    <option value="5">5 minutes</option>
+                    <option value="5">@Localizer["19"]</option>
                 }
                 @if (Model.RingingDuration == "10")
                 {
-                    <option value="10" selected>10 minutes</option>
+                    <option value="10" selected>@Localizer["20"]</option>
                 }
                 else
                 {
-                    <option value="10">10 minutes</option>
+                    <option value="10">@Localizer["20"]</option>
                 }
                 @if (Model.RingingDuration == "15")
                 {
-                    <option value="15" selected>15 minutes</option>
+                    <option value="15" selected>@Localizer["21"]</option>
                 }
                 else
                 {
-                    <option value="15">15 minutes</option>
+                    <option value="15">@Localizer["21"]</option>
                 }
                 @if (Model.RingingDuration == "20")
                 {
-                    <option value="20" selected>20 minutes</option>
+                    <option value="20" selected>@Localizer["22"]</option>
                 }
                 else
                 {
-                    <option value="20">20 minutes</option>
+                    <option value="20">@Localizer["22"]</option>
                 }
                 @if (Model.RingingDuration == "30")
                 {
-                    <option value="30" selected>30 minutes</option>
+                    <option value="30" selected>@Localizer["23"]</option>
                 }
                 else
                 {
-                    <option value="30">30 minutes</option>
+                    <option value="30">@Localizer["23"]</option>
                 }
             </select>
             <span asp-validation-for="RingingDuration" class="text-danger"></span>
             <br />
-            <span class="newtasktext">Snooze duration (min):</span>
+            <span class="newtasktext">@Localizer["24"]:</span>
             <select class="form-control" asp-for="SnoozeDuration" name="SnoozeDuration">
                 @if (Model.SnoozeDuration == "5")
                 {
-                    <option value="5" selected>5 minutes</option>
+                    <option value="5" selected>@Localizer["19"]</option>
                 }
                 else
                 {
-                    <option value="5">5 minutes</option>
+                    <option value="5">@Localizer["19"]</option>
                 }
                 @if (Model.SnoozeDuration == "10")
                 {
-                    <option value="10" selected>10 minutes</option>
+                    <option value="10" selected>@Localizer["20"]</option>
                 }
                 else
                 {
-                    <option value="10">10 minutes</option>
+                    <option value="10">@Localizer["20"]</option>
                 }
                 @if (Model.SnoozeDuration == "15")
                 {
-                    <option value="15" selected>15 minutes</option>
+                    <option value="15" selected>@Localizer["21"]</option>
                 }
                 else
                 {
-                    <option value="15">15 minutes</option>
+                    <option value="15">@Localizer["21"]</option>
                 }
                 @if (Model.SnoozeDuration == "20")
                 {
-                    <option value="20" selected>20 minutes</option>
+                    <option value="20" selected>@Localizer["22"]</option>
                 }
                 else
                 {
-                    <option value="20">20 minutes</option>
+                    <option value="20">@Localizer["22"]</option>
                 }
                 @if (Model.SnoozeDuration == "25")
                 {
-                    <option value="25" selected>25 minutes</option>
+                    <option value="25" selected>@Localizer["25"]</option>
                 }
                 else
                 {
-                    <option value="25">25 minutes</option>
+                    <option value="25">@Localizer["25"]</option>
                 }
                 @if (Model.SnoozeDuration == "30")
                 {
-                    <option value="30" selected>30 minutes</option>
+                    <option value="30" selected>@Localizer["23"]</option>
                 }
                 else
                 {
-                    <option value="30">30 minutes</option>
+                    <option value="30">@Localizer["23"]</option>
                 }
             </select>
             <span asp-validation-for="SnoozeDuration" class="text-danger"></span>
             <br />
-            <span class="newtasktext">Activity:</span>
+            <span class="newtasktext">@Localizer["26"]:</span>
             <select class="form-control" asp-for="Activity" name="Activity">
                 @if (Model.Activity == "true")
                 {
-                    <option value="1" selected>Active</option>
+                    <option value="1" selected>@Localizer["27"]</option>
                 }
                 else
                 {
-                    <option value="1">Active</option>
+                    <option value="1">@Localizer["27"]</option>
                 }
                 @if (Model.Activity == "false")
                 {
-                    <option value="2" selected>Inactive</option>
+                    <option value="2" selected>@Localizer["28"]</option>
                 }
                 else
                 {
-                    <option value="2">Inactive</option>
+                    <option value="2">@Localizer["28"]</option>
                 }
             </select>
             <span class="text-danger" asp-validation-for="Activity"></span>
             @if (!User.Identity.IsAuthenticated)
             {
                 <br />
-                <span class="helptext">For permanent storage of alarm <a href="/Account/Login">Log in</a></span>
+                <span class="helptext">@Localizer["29"] <a asp-controller="Account" asp-action="Login">@Localizer["30"]</a></span>
             }
             <br />
             <br />
-            <button type="submit" class="btn savetaskbtn">Save alarm</button>
+            <button type="submit" class="btn savetaskbtn">@Localizer["31"]</button>
             <br />
         </form>
     </div>

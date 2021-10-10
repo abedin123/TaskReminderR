@@ -1,86 +1,87 @@
-﻿@model GenerateSuccess.ViewModels.MainHomePreviewVM
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model GenerateSuccess.ViewModels.MainHomePreviewVM
 
 <div id="mainnotificationdiv" style="display:none;">
-        <div id="tasknotificationdiv">
-            @if (Model != null)
+    <div id="tasknotificationdiv">
+        @if (Model != null)
+        {
+            @if (Model.MainNotification != null)
             {
-                @if (Model.MainNotification != null)
+                @if (Model.MainNotification.TaskList.Any())
                 {
-                    @if (Model.MainNotification.TaskList.Any())
+                    @foreach (var item in Model.MainNotification.TaskList)
                     {
-                        @foreach (var item in Model.MainNotification.TaskList)
-                        {
-                            <div class="tasknotification">
-                                <input asp-for="@item.Key" type="text" readonly />
-                                <input type="text" readonly asp-for="@item.TaskName" />
-                                <input asp-for="@item.StartTime" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
-                                <input asp-for="@item.StartTime" type="time" asp-format="{0:HH:mm}" readonly />
-                                <input asp-for="@item.EndTime" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
-                                <input asp-for="@item.EndTime" type="time" asp-format="{0:HH:mm}" readonly />
-                                <input asp-for="@item.LastNotification" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
-                                <input asp-for="@item.LastNotification" type="time" asp-format="{0:HH:mm}" readonly />
-                                <input asp-for="@item.NotificationEvery" type="number" readonly />
-                                <input asp-for="@item.Priority" type="text" readonly />
-                                <input asp-for="@item.SoundName" type="text" readonly />
-                                <input asp-for="@item.Days" type="text" readonly />
-                                <input asp-for="@item.CreatedFor" type="text" readonly />
-                                <input asp-for="@item.Stats" type="text" readonly />
-                                <input asp-for="@item.AcceptedNotification" type="text" readonly />
-                                <input asp-for="@item.Rated" type="text" readonly />
-                            </div>
-                        }
+                        <div class="tasknotification">
+                            <input asp-for="@item.Key" type="text" readonly />
+                            <input type="text" readonly asp-for="@item.TaskName" />
+                            <input asp-for="@item.StartTime" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
+                            <input asp-for="@item.StartTime" type="time" asp-format="{0:HH:mm}" readonly />
+                            <input asp-for="@item.EndTime" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
+                            <input asp-for="@item.EndTime" type="time" asp-format="{0:HH:mm}" readonly />
+                            <input asp-for="@item.LastNotification" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
+                            <input asp-for="@item.LastNotification" type="time" asp-format="{0:HH:mm}" readonly />
+                            <input asp-for="@item.NotificationEvery" type="number" readonly />
+                            <input asp-for="@item.Priority" type="text" readonly />
+                            <input asp-for="@item.SoundName" type="text" readonly />
+                            <input asp-for="@item.Days" type="text" readonly />
+                            <input asp-for="@item.CreatedFor" type="text" readonly />
+                            <input asp-for="@item.Stats" type="text" readonly />
+                            <input asp-for="@item.AcceptedNotification" type="text" readonly />
+                            <input asp-for="@item.Rated" type="text" readonly />
+                        </div>
                     }
                 }
             }
-        </div>
-        <div id="alarmnotificationdiv">
-            @if (Model != null)
+        }
+    </div>
+    <div id="alarmnotificationdiv">
+        @if (Model != null)
+        {
+            @if (Model.MainNotification != null)
             {
-                @if (Model.MainNotification != null)
+                @if (Model.MainNotification.AlarmList.Any())
                 {
-                    @if (Model.MainNotification.AlarmList.Any())
+                    @foreach (var item in Model.MainNotification.AlarmList)
                     {
-                        @foreach (var item in Model.MainNotification.AlarmList)
-                        {
-                            <div class="alarmnotification">
-                                <input asp-for="@item.Key" type="text" readonly />
-                                <input asp-for="@item.AlarmName" type="text" readonly />
-                                <input asp-for="@item.RingingTime" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
-                                <input asp-for="@item.RingingTime" type="time" asp-format="{0:HH:mm}" readonly />
-                                <input asp-for="@item.LastSnooze" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
-                                <input asp-for="@item.LastSnooze" type="time" asp-format="{0:HH:mm}" readonly />
-                                <input asp-for="@item.RingDuration" type="number" readonly />
-                                <input asp-for="@item.SnoozeDuration" type="number" readonly />
-                                <input asp-for="@item.SoundName" type="text" readonly />
-                                <input asp-for="@item.Days" type="text" readonly />
-                                <input asp-for="@item.CreatedFor" type="text" readonly />
-                                <input asp-for="@item.LastAlarmRinging" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
-                            </div>
-                        }
+                        <div class="alarmnotification">
+                            <input asp-for="@item.Key" type="text" readonly />
+                            <input asp-for="@item.AlarmName" type="text" readonly />
+                            <input asp-for="@item.RingingTime" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
+                            <input asp-for="@item.RingingTime" type="time" asp-format="{0:HH:mm}" readonly />
+                            <input asp-for="@item.LastSnooze" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
+                            <input asp-for="@item.LastSnooze" type="time" asp-format="{0:HH:mm}" readonly />
+                            <input asp-for="@item.RingDuration" type="number" readonly />
+                            <input asp-for="@item.SnoozeDuration" type="number" readonly />
+                            <input asp-for="@item.SoundName" type="text" readonly />
+                            <input asp-for="@item.Days" type="text" readonly />
+                            <input asp-for="@item.CreatedFor" type="text" readonly />
+                            <input asp-for="@item.LastAlarmRinging" type="date" asp-format="{0:yyyy-MM-dd}" readonly />
+                        </div>
                     }
                 }
             }
-        </div>
+        }
+    </div>
 </div>
 <div id="loadtest" style="display:none;">
     Test
 </div>
 <div id="mobilehome">
     <div id="ads"></div>
-
     <div id="mainhomemobile">
         <div class="parentcenterdiv">
-            <a href="/Home/MobileTask">
+            <a asp-controller="Home" asp-action="MobileTask">
                 <div id="task" class="mobiletaskalarm">
-                    <p class="mobileteksttaskalarm">Task</p>
+                    <p class="mobileteksttaskalarm">@Localizer["1"]</p>
                 </div>
             </a>
         </div>
 
         <div class="parentcenterdiv">
-            <a href="/Home/MobileAlarm">
+            <a asp-controller="Home" asp-action="MobileAlarm">
                 <div id="alarm" class="mobiletaskalarm">
-                    <p class="mobileteksttaskalarm">Alarm</p>
+                    <p class="mobileteksttaskalarm">@Localizer["2"]</p>
                 </div>
             </a>
         </div>
@@ -91,79 +92,79 @@
     <div class="row rowdiv">
         <div id="leftdiv" class="col-lg-5 col-md-5">
             <div id="searchdivleft" class="col-md-4 col-lg-4 searchtaskchilddiv">
-                <form action="/Home/Search" method="get">
-                    <span class="researchtext">Search by:</span><br />
-                    <input class="effect inputsearch" type="text" placeholder="Task name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Task name'" asp-for="TaskName" name="TaskName" />
+                <form asp-controller="Home" asp-action="Search" method="get">
+                    <span class="researchtext">@Localizer["3"]:</span><br />
+                    <input class="effect inputsearch" type="text" placeholder="@Localizer["4"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["4"]'" asp-for="TaskName" name="TaskName" />
                     <span asp-validation-for="TaskName" style="color:white;"></span>
                     <div id="status">
-                        <span class="researchtext status">Status:</span>
+                        <span class="researchtext status">@Localizer["5"]:</span>
                         <div class="sel sel--black-panther">
                             <span class="arroww"></span>
                             <select id="select-profession" asp-for="TaskStatus" name="TaskStatus">
-                                <option value="0">All</option>
-                                <option value="1">All</option>
-                                <option value="2">In processing</option>
-                                <option value="3">Upcoming</option>
-                                <option value="4">Finished</option>
+                                <option value="0">@Localizer["6"]</option>
+                                <option value="1">@Localizer["6"]</option>
+                                <option value="2">@Localizer["7"]</option>
+                                <option value="3">@Localizer["8"]</option>
+                                <option value="4">@Localizer["9"]</option>
                             </select>
                         </div>
                     </div>
                     <span asp-validation-for="TaskStatus" style="color:white;"></span>
                     <div class="dateresearch">
-                        <span class="researchtext">From:</span>
+                        <span class="researchtext">@Localizer["10"]:</span>
                         <input type="date" name="From" asp-for="From" class="fromtoresearch" asp-format="{0:yyyy-MM-dd}" />
                         <span asp-validation-for="From" style="color:white;"></span>
-                        <span class="researchtext">To:</span>
+                        <span class="researchtext">@Localizer["11"]:</span>
                         <br />
                         <input type="date" name="To" asp-for="To" class="fromtoresearch" asp-format="{0:yyyy-MM-dd}" />
                         <span asp-validation-for="To" style="color:white;"></span>
                     </div>
                     <div class="btnsearchdiv">
-                        <button type="submit" class="btn btnsearch">Search</button>
+                        <button type="submit" class="btn btnsearch">@Localizer["12"]</button>
                     </div>
                 </form>
             </div>
             <div class="smallsearchleftdiv">
-                <button id="filtertext" class="smallsearchfiltertext" onclick="Close()">Filter</button>
+                <button id="filtertext" class="smallsearchfiltertext" onclick="Close()">@Localizer["13"]</button>
             </div>
             <div id="smallsearchdiv">
                 <div class="col-md-12 col-lg-4 smallchildfilterdiv">
-                    <form action="/Home/Search" method="get">
-                        <span class="researchtext">Search by:</span><br />
-                        <input class="effect inputsearch" type="text" placeholder="Task name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Task name'"  name="TaskName" asp-for="TaskName" />
+                    <form asp-controller="Home" asp-action="Search" method="get">
+                        <span class="researchtext">@Localizer["3"]:</span><br />
+                        <input class="effect inputsearch" type="text" placeholder="@Localizer["4"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["4"]'" name="TaskName" asp-for="TaskName" />
                         <span asp-validation-for="TaskName" class="text-danger"></span>
                         <div id="status">
-                            <span class="researchtext status">Status:</span>
+                            <span class="researchtext status">@Localizer["5"]:</span>
                             <div class="sel sel--black-panther">
                                 <span class="arroww"></span>
                                 <select name="TaskStatus" id="select-profession" class="smallprofessionselect" asp-for="TaskStatus">
-                                    <option value="0">All</option>
-                                    <option value="1">All</option>
-                                    <option value="2">In processing</option>
-                                    <option value="3">Upcoming</option>
-                                    <option value="4">Finished</option>
+                                    <option value="0">@Localizer["6"]</option>
+                                    <option value="1">@Localizer["6"]</option>
+                                    <option value="2">@Localizer["7"]</option>
+                                    <option value="3">@Localizer["8"]</option>
+                                    <option value="4">@Localizer["9"]</option>
                                 </select>
                             </div>
                         </div>
                         <span asp-validation-for="TaskStatus" class="text-danger"></span>
                         <div class="dateresearch">
-                            <span class="researchtext">From:</span>
+                            <span class="researchtext">@Localizer["10"]:</span>
                             <input type="date" name="From" class="fromtoresearch" asp-for="From" asp-format="{0:yyyy-MM-dd}" />
                             <span asp-validation-for="From" class="text-danger"></span>
-                            <span class="researchtext">To:</span>
+                            <span class="researchtext">@Localizer["11"]:</span>
                             <br />
                             <input type="date" name="To" class="fromtoresearch" asp-for="To" asp-format="{0:yyyy-MM-dd}" />
                             <span asp-validation-for="To" class="text-danger"></span>
                         </div>
                         <div class="btnsearchdiv">
-                            <button type="submit" class="btn btnsearch">Search</button>
+                            <button type="submit" class="btn btnsearch">@Localizer["12"]</button>
                         </div>
                     </form>
                 </div>
             </div>
             <div id="mainsearchresult" class="col-lg-6 col-md-7 searchcontainerparent">
                 <div class="addnewtaskalarmparent">
-                    <a href="/Task/NewTask" class="btn addnewtaskalarm">New task</a>
+                    <a asp-controller="Task" asp-action="NewTask" class="btn addnewtaskalarm">@Localizer["14"]</a>
                 </div>
                 <div class="col-lg-12 searchcontainer">
                     <div class="col-lg-12 maintaskalarm">
@@ -179,9 +180,9 @@
                                         {
                                             <div class="task">
                                                 <div class="col-lg-10 col-md-10 parentmainsearchdiv">
-                                                    <div class="statusdiv"><span class="statustext">Status:</span><span class="statusundertext">@item.Status</span></div>
+                                                    <div class="statusdiv"><span class="statustext">@Localizer["5"]:</span><span class="statusundertext">@Localizer[@item.Status]</span></div>
                                                     <div class="maintaskdiv"><span class="nameofthetask">@item.TaskName</span></div>
-                                                    <div class="prioritytaskdiv"><span class="prirotytext">@item.DateDayStarting</span><span class="priorityundertext">@item.TimeStarting</span></div>
+                                                    <div class="prioritytaskdiv"><span class="prirotytext">@Localizer[@item.DateDayStarting]</span><span class="priorityundertext">@item.TimeStarting</span></div>
                                                 </div>
                                                 <div class="editdeletetaskdiv">
                                                     <form asp-controller="Task" asp-action="EditTask" method="post">
@@ -200,7 +201,7 @@
                                         {
                                             <div class="task">
                                                 <div class="col-lg-10 col-md-10 parentmainsearchdiv">
-                                                    <div class="statusdiv"><span class="statustext">Status:</span><span class="statusundertext">@item.Status</span></div>
+                                                    <div class="statusdiv"><span class="statustext">@Localizer["5"]:</span><span class="statusundertext">@Localizer[@item.Status]</span></div>
                                                     <div class="maintaskdiv"><span class="nameofthetask">@item.TaskName</span></div>
                                                     <div class="prioritytaskdiv"><span class="prirotytext">@item.DateDayStarting</span><span class="priorityundertext">@item.TimeStarting</span></div>
                                                 </div>
@@ -224,14 +225,14 @@
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 successcontaner">
-                    <div class="class-lg-12" id="successdiv"><span class="successfulltext">Successability:</span><span class="successpercentage">@Model.Success</span></div>
+                    <div class="class-lg-12" id="successdiv"><span class="successfulltext">@Localizer["15"]:</span><span class="successpercentage">@Model.Success</span></div>
                 </div>
             </div>
         </div>
         <div id="rightdiv" class="col-lg-5 col-md-5">
             <div class="col-lg-6 col-md-7 rightsearchcontainerparent">
                 <div class="addnewtaskalarmparent">
-                    <a asp-controller="Alarm" asp-action="NewAlarm" class="btn addnewtaskalarm">New alarm</a>
+                    <a asp-controller="Alarm" asp-action="NewAlarm" class="btn addnewtaskalarm">@Localizer["16"]</a>
                 </div>
                 <div class="col-lg-12 searchcontainer">
                     <div class="col-lg-12 maintaskalarm">
@@ -245,9 +246,9 @@
                                     {
                                         <div class="task">
                                             <div class="col-lg-10 col-md-10 parentmainsearchdiv">
-                                                <div class="statusdiv"><span class="statustext">Status:</span><span class="statusundertext">@item.Status</span></div>
+                                                <div class="statusdiv"><span class="statustext">@Localizer["5"]:</span><span class="statusundertext">@Localizer[@item.Status]</span></div>
                                                 <div class="maintaskdiv"><span class="nameofthetask">@item.AlarmName</span></div>
-                                                <div class="prioritytaskdiv"><span class="prirotytext">@item.DateDayStarting</span><span class="priorityundertext">@item.TimeStarting</span></div>
+                                                <div class="prioritytaskdiv"><span class="prirotytext">@Localizer[@item.DateDayStarting]</span><span class="priorityundertext">@item.TimeStarting</span></div>
                                             </div>
                                             <div class="editdeletetaskdiv">
                                                 <form asp-controller="Alarm" asp-action="EditAlarm" method="post">
@@ -269,26 +270,26 @@
                 </div>
             </div>
             <div class="smallsearchrightdiv">
-                <button id="filtertexttwo" class="smallsearchfiltertext" onclick="Close1()">Filter</button>
+                <button id="filtertexttwo" class="smallsearchfiltertext" onclick="Close1()">@Localizer["13"]</button>
             </div>
             <div id="smallsearchdivright">
                 <div id="rightsearchdivsmall" class="col-lg-4 col-md-12 searchtaskchilddiv">
-                    <form action="/Home/AlarmSearch">
-                        <span class="researchtext">Search by:</span><br />
+                    <form asp-controller="Home" asp-action="AlarmSearch" method="get">
+                        <span class="researchtext">@Localizer["3"]:</span><br />
                         <div id="status">
-                            <span class="researchtext status">Status:</span>
+                            <span class="researchtext status">@Localizer["5"]:</span>
                             <div class="sel sel--black-panther rightdivsearch">
                                 <span class="arroww"></span>
                                 <select name="AlarmStatus" asp-for="AlarmStatus" class="smallprofessionselectalarm">
-                                    <option value="0">All</option>
-                                    <option value="1">All</option>
-                                    <option value="2">Active</option>
-                                    <option value="3">Inactive</option>
+                                    <option value="0">@Localizer["6"]</option>
+                                    <option value="1">@Localizer["6"]</option>
+                                    <option value="2">@Localizer["Active"]</option>
+                                    <option value="3">@Localizer["Inactive"]</option>
                                 </select>
                             </div>
                         </div>
                         <div id="daysearch">
-                            <span class="researchtext status">Day:</span><br />
+                            <span class="researchtext status">@Localizer["17"]:</span><br />
                             <div id="customcreateforright">
                                 <div class="weekDays-selector">
                                     @if (Model.M == "true")
@@ -299,7 +300,7 @@
                                     {
                                         <input type="checkbox" id="weekday-mon" class="weekday" asp-for="M" name="M" />
                                     }
-                                    <label for="weekday-mon">Mon</label>
+                                    <label for="weekday-mon" class="labelweek">@Localizer["Mon"]</label>
                                     @if (Model.T == "true")
                                     {
                                         <input type="checkbox" id="weekday-tue" class="weekday" asp-for="T" name="T" checked />
@@ -308,7 +309,7 @@
                                     {
                                         <input type="checkbox" id="weekday-tue" class="weekday" asp-for="T" name="T" />
                                     }
-                                    <label for="weekday-tue">Tue</label>
+                                    <label for="weekday-tue" class="labelweek">@Localizer["Tue"]</label>
                                     @if (Model.W == "true")
                                     {
                                         <input type="checkbox" id="weekday-wed" class="weekday" asp-for="W" name="W" checked />
@@ -317,7 +318,7 @@
                                     {
                                         <input type="checkbox" id="weekday-wed" class="weekday" asp-for="W" name="W" />
                                     }
-                                    <label for="weekday-wed">Wed</label>
+                                    <label for="weekday-wed" class="labelweek">@Localizer["Wed"]</label>
                                     @if (Model.Th == "true")
                                     {
                                         <input type="checkbox" id="weekday-thu" class="weekday" asp-for="Th" name="Th" checked />
@@ -326,7 +327,7 @@
                                     {
                                         <input type="checkbox" id="weekday-thu" class="weekday" asp-for="Th" name="Th" />
                                     }
-                                    <label for="weekday-thu">Thu</label>
+                                    <label for="weekday-thu" class="labelweek">@Localizer["Thu"]</label>
                                     @if (Model.F == "true")
                                     {
                                         <input type="checkbox" id="weekday-fri" class="weekday" asp-for="F" name="F" checked />
@@ -335,7 +336,7 @@
                                     {
                                         <input type="checkbox" id="weekday-fri" class="weekday" asp-for="F" name="F" />
                                     }
-                                    <label for="weekday-fri">Fri</label>
+                                    <label for="weekday-fri" class="labelweek">@Localizer["Fri"]</label>
                                     @if (Model.Sa == "true")
                                     {
                                         <input type="checkbox" id="weekday-sat" class="weekday" asp-for="Sa" name="Sa" checked />
@@ -344,114 +345,114 @@
                                     {
                                         <input type="checkbox" id="weekday-sat" class="weekday" asp-for="Sa" name="Sa" />
                                     }
-                                    <label for="weekday-sat">Sat</label>
+                                    <label for="weekday-sat" class="labelweek">@Localizer["Sat"]</label>
                                     @if (Model.S == "true")
                                     {
                                         <input type="checkbox" id="weekday-sun" class="weekday" asp-for="S" name="S" checked />
                                     }
                                     else
                                     {
-                                        <input type="checkbox" id="weekday-sun" class="weekday" asp-for="S" name="S"/>
+                                        <input type="checkbox" id="weekday-sun" class="weekday" asp-for="S" name="S" />
                                     }
-                                    <label for="weekday-sun">Sun</label>
+                                    <label for="weekday-sun" class="labelweek">@Localizer["Sun"]</label>
                                 </div>
                             </div>
                         </div>
                         <div class="btnsearchdiv">
-                            <button type="submit" class="btn btnsearch">Search</button>
+                            <button type="submit" class="btn btnsearch">@Localizer["12"]</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <div id="rightsearchdiv" class="col-lg-4 col-md-4 searchtaskchilddiv">       
-                    <form action="/Home/AlarmSearch">
-                        <span class="researchtext">Search by:</span><br />
-                        <div id="status">
-                            <span class="researchtext status">Status:</span>
-                            <div class="sel sel--black-panther rightdivsearch">
-                                <span class="arroww"></span>
-                                <select name="AlarmStatus" asp-for="AlarmStatus" class="rightselectdesktop" id="select-profession">
-                                    <option value="0">All</option>
-                                    <option value="1">All</option>
-                                    <option value="2">Active</option>
-                                    <option value="3">Inactive</option>
-                                </select>
+            <div id="rightsearchdiv" class="col-lg-4 col-md-4 searchtaskchilddiv">
+                <form asp-controller="Home" asp-action="AlarmSearch" method="get">
+                    <span class="researchtext">@Localizer["3"]:</span><br />
+                    <div id="status">
+                        <span class="researchtext status">@Localizer["5"]:</span>
+                        <div class="sel sel--black-panther rightdivsearch">
+                            <span class="arroww"></span>
+                            <select name="AlarmStatus" asp-for="AlarmStatus" class="rightselectdesktop" id="select-profession">
+                                <option value="0">@Localizer["6"]</option>
+                                <option value="1">@Localizer["6"]</option>
+                                <option value="2">@Localizer["Active"]</option>
+                                <option value="3">@Localizer["Inactive"]</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="daysearch">
+                        <span class="researchtext status">@Localizer["17"]:</span><br />
+                        <div id="customcreateforrightt">
+                            <div class="weekDays-selectorr">
+                                @if (Model.M == "true")
+                                {
+                                    <input type="checkbox" id="weekday-monn" class="weekdayss" asp-for="M" name="M" checked />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="weekday-monn" class="weekdayss" asp-for="M" name="M" />
+                                }
+                                <label for="weekday-monn" class="labelweek">@Localizer["Mon"]</label>
+                                @if (Model.T == "true")
+                                {
+                                    <input type="checkbox" id="weekday-tuee" class="weekdayss" asp-for="T" name="T" checked />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="weekday-tuee" class="weekdayss" asp-for="T" name="T" />
+                                }
+                                <label for="weekday-tuee" class="labelweek">@Localizer["Tue"]</label>
+                                @if (Model.W == "true")
+                                {
+                                    <input type="checkbox" id="weekday-wedd" class="weekdayss" asp-for="W" name="W" checked />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="weekday-wedd" class="weekdayss" asp-for="W" name="W" />
+                                }
+                                <label for="weekday-wedd" class="labelweek">@Localizer["Wed"]</label>
+                                @if (Model.Th == "true")
+                                {
+                                    <input type="checkbox" id="weekday-thuu" class="weekdayss" asp-for="Th" name="Th" checked />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="weekday-thuu" class="weekdayss" asp-for="Th" name="Th" />
+                                }
+                                <label for="weekday-thuu" class="labelweek">@Localizer["Thu"]</label>
+                                @if (Model.F == "true")
+                                {
+                                    <input type="checkbox" id="weekday-frii" class="weekdayss" asp-for="F" name="F" checked />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="weekday-frii" class="weekdayss" asp-for="F" name="F" />
+                                }
+                                <label for="weekday-frii" class="labelweek">@Localizer["Fri"]</label>
+                                @if (Model.Sa == "true")
+                                {
+                                    <input type="checkbox" id="weekday-satt" class="weekdayss" asp-for="Sa" name="Sa" checked />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="weekday-satt" class="weekdayss" asp-for="Sa" name="Sa" />
+                                }
+                                <label for="weekday-satt" class="labelweek">@Localizer["Sat"]</label>
+                                @if (Model.S == "true")
+                                {
+                                    <input type="checkbox" id="weekday-sunn" class="weekdayss" asp-for="S" name="S" checked />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="weekday-sunn" class="weekdayss" asp-for="S" name="S" />
+                                }
+                                <label for="weekday-sunn" class="labelweek">@Localizer["Sun"]</label>
                             </div>
                         </div>
-                        <div id="daysearch">
-                            <span class="researchtext status">Day:</span><br />
-                            <div id="customcreateforrightt">
-                                <div class="weekDays-selectorr">
-                                    @if (Model.M == "true")
-                                    {
-                                        <input type="checkbox" id="weekday-monn" class="weekdayss" asp-for="M" name="M" checked />
-                                    }
-                                    else
-                                    {
-                                        <input type="checkbox" id="weekday-monn" class="weekdayss" asp-for="M" name="M" />
-                                    }
-                                    <label for="weekday-monn">Mon</label>
-                                    @if (Model.T == "true")
-                                    {
-                                        <input type="checkbox" id="weekday-tuee" class="weekdayss" asp-for="T" name="T" checked />
-                                    }
-                                    else
-                                    {
-                                        <input type="checkbox" id="weekday-tuee" class="weekdayss" asp-for="T" name="T" />
-                                    }
-                                    <label for="weekday-tuee">Tue</label>
-                                    @if (Model.W == "true")
-                                    {
-                                        <input type="checkbox" id="weekday-wedd" class="weekdayss" asp-for="W" name="W" checked />
-                                    }
-                                    else
-                                    {
-                                        <input type="checkbox" id="weekday-wedd" class="weekdayss" asp-for="W" name="W" />
-                                    }
-                                    <label for="weekday-wedd">Wed</label>
-                                    @if (Model.Th == "true")
-                                    {
-                                        <input type="checkbox" id="weekday-thuu" class="weekdayss" asp-for="Th" name="Th" checked />
-                                    }
-                                    else
-                                    {
-                                        <input type="checkbox" id="weekday-thuu" class="weekdayss" asp-for="Th" name="Th" />
-                                    }
-                                    <label for="weekday-thuu">Thu</label>
-                                    @if (Model.F == "true")
-                                    {
-                                        <input type="checkbox" id="weekday-frii" class="weekdayss" asp-for="F" name="F" checked />
-                                    }
-                                    else
-                                    {
-                                        <input type="checkbox" id="weekday-frii" class="weekdayss" asp-for="F" name="F" />
-                                    }
-                                    <label for="weekday-frii">Fri</label>
-                                    @if (Model.Sa == "true")
-                                    {
-                                        <input type="checkbox" id="weekday-satt" class="weekdayss" asp-for="Sa" name="Sa" checked />
-                                    }
-                                    else
-                                    {
-                                        <input type="checkbox" id="weekday-satt" class="weekdayss" asp-for="Sa" name="Sa" />
-                                    }
-                                    <label for="weekday-satt">Sat</label>
-                                    @if (Model.S == "true")
-                                    {
-                                        <input type="checkbox" id="weekday-sunn" class="weekdayss" asp-for="S" name="S" checked />
-                                    }
-                                    else
-                                    {
-                                        <input type="checkbox" id="weekday-sunn" class="weekdayss" asp-for="S" name="S" />
-                                    }
-                                    <label for="weekday-sunn">Sun</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="btnsearchdiv">
-                            <button type="submit" class="btn btnsearch">Search</button>
-                        </div>
-                    </form>        
+                    </div>
+                    <div class="btnsearchdiv">
+                        <button type="submit" class="btn btnsearch">@Localizer["12"]</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

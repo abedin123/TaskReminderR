@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using GenerateSuccess.AppDBContext;
 using GenerateSuccess.Models;
@@ -33,8 +34,16 @@ namespace GenerateSuccess.Services
         }
         public bool UserNameExistVal(string username)
         {
+            var finalPass = "";
+
+            for (int i = 0; i < username.Length; i++)
+            {
+                finalPass += ((int)username[i]).ToString();
+            }
+
+
             User user = null;
-            user = _context.User.Where(a => a.UserName.ToLower() == username.ToLower()).FirstOrDefault();
+            user = _context.User.Where(a => a.UserName.ToLower() == finalPass.ToLower()).FirstOrDefault();
 
             if (user != null)
                 return true;
@@ -69,14 +78,45 @@ namespace GenerateSuccess.Services
             return false;
         }
 
+        private bool EveryThingIsOk(string UserName)
+        {
+            foreach (var item in UserName)
+            {
+                if(char.IsLetterOrDigit(item)==false)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public async Task<bool> Register(RegisterVM model)
         {
+            var finalPass = "";
+            
+            for (int i = 0; i < model.UserName.Length; i++)
+            {
+                finalPass += ((int)model.UserName[i]).ToString();
+            }
+            
             var user = new User
             {
                 UserName = model.UserName
             };
-            var result = await _userManager.CreateAsync(user, model.Password);
 
+            
+            var usertest = new User
+            {
+                UserName = finalPass
+            };
+
+            var forusing = usertest;
+            if (EveryThingIsOk(model.UserName)==false)
+            {
+                forusing = user;
+            }
+
+            var result = await _userManager.CreateAsync(forusing, model.Password);
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, isPersistent: false);
@@ -88,10 +128,22 @@ namespace GenerateSuccess.Services
 
         public async Task<bool> Login(LoginVM user)
         {
-            var result = await _signInManager.PasswordSignInAsync(user.UserName, user.Password, user.RememberMe, false);
+            var finalPass = "";
 
+            for (int i = 0; i < user.UserName.Length; i++)
+            {
+                finalPass += ((int)user.UserName[i]).ToString();
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(finalPass, user.Password, user.RememberMe, false);
             if (result.Succeeded)
             {
+                await _signInManager.SignOutAsync();
+                var userr = new User
+                {
+                    UserName = user.UserName
+                };
+                await _signInManager.SignInAsync(userr, isPersistent: false);
                 return true;
             }
             return false;

@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="1" xml:space="preserve">
+    <value>เราเป็นหน่วยงานด้านการตลาดดิจิทัลที่ทำงานเกี่ยวกับการส่งเสริมเว็บแอปพลิเคชันและเว็บไซต์ที่มีประโยชน์มาก
+            แอปพลิเคชันของเราเป็นที่รู้จักและใช้กันทั่วโลกและนำไปใช้ในวิชาชีพต่างๆ
+            นี่เป็นหนึ่งในแอปพลิเคชันของเราที่ใช้งานได้ฟรี เราเรียกมันว่าตัวเตือนงาน และคุณเรียกมันว่าอะไรก็ได้ที่คุณต้องการ
+            สิ่งเดียวที่สำคัญคือ แอปพลิเคชันนี้มีประโยชน์อย่างมากสำหรับคุณในการแก้ไขกิจกรรมรายวัน รายเดือน หรือรายปีของคุณ
+            เว็บแอปพลิเคชันของเราสามารถใช้เป็น</value>
+  </data>
+  <data name="10" xml:space="preserve">
+    <value>การใช้และการจัดการ</value>
+  </data>
+  <data name="11" xml:space="preserve">
+    <value>การใช้งานและการจัดการถูกนำเสนอด้วยวิธีที่ง่ายมากในแอปพลิเคชันของเรา คุณจะเพิ่มข้อมูลที่จำเป็นทั้งหมดในขณะนี้
+            ของการสร้าง หลังจากนั้น แอปพลิเคชันของเราจะทำงานที่เหลือโดยไม่มีการแก้ไขหรือเปลี่ยนแปลงการตั้งค่าใดๆ เว้นแต่
+            คุณต้องการที่จะทำมันเอง</value>
+  </data>
+  <data name="12" xml:space="preserve">
+    <value>มีขั้นตอนสั้นๆ สองสามขั้นตอนในการสร้างงาน</value>
+  </data>
+  <data name="13" xml:space="preserve">
+    <value>กดปุ่ม "งานใหม่"</value>
+  </data>
+  <data name="14" xml:space="preserve">
+    <value>ตั้งชื่อ</value>
+  </data>
+  <data name="15" xml:space="preserve">
+    <value>ตั้งค่าคำอธิบาย (ไม่บังคับ)</value>
+  </data>
+  <data name="16" xml:space="preserve">
+    <value>ปรับการตั้งค่า (สร้างสำหรับ เวลา การแจ้งเตือนทุกรายการ และลำดับความสำคัญ)</value>
+  </data>
+  <data name="17" xml:space="preserve">
+    <value>ตั้งค่าเสียง</value>
+  </data>
+  <data name="18" xml:space="preserve">
+    <value>กดปุ่ม "บันทึกงาน"</value>
+  </data>
+  <data name="19" xml:space="preserve">
+    <value>ตอนนี้เราจะชี้แจงส่วนที่เราคิดว่าอาจก่อให้เกิดความสับสนในขณะที่ใช้การเตือนความจำ</value>
+  </data>
+  <data name="2" xml:space="preserve">
+    <value>ปฏิทินการทำงาน</value>
+  </data>
+  <data name="20" xml:space="preserve">
+    <value>ปรับการตั้งค่า</value>
+  </data>
+  <data name="21" xml:space="preserve">
+    <value>สร้างเพื่อ</value>
+  </data>
+  <data name="22" xml:space="preserve">
+    <value>รายการสร้างสำหรับมีวัตถุประสงค์เพื่อระบุ
+            จำนวนครั้งที่ควรมีเหตุการณ์ซ้ำ ในกรณีที่คุณเลือก "ครั้งเดียว" กิจกรรมของคุณจะเสร็จสมบูรณ์เฉพาะในนั้น
+            วันที่. หากคุณเลือก "กำหนดเอง" คุณจะมีตัวเลือกในการระบุวันที่จัดกิจกรรมเฉพาะ หลังจากเลือกหนึ่งใน
+            สองตัวเลือกจากรายการที่แอพจะเสนอให้คุณเลือกเวลาได้สองวิธี ในกรณีที่คุณได้เลือก "ครั้งเดียว" คุณมี
+            โอกาสในการเลือกทั้งวันและเวลาในการดำเนินการในกรณีที่สองคุณจะได้รับเฉพาะเวลาเพราะ
+            ก่อนหน้านี้คุณควรทำเครื่องหมายเป็นสีเขียวไว้สำหรับวันที่คุณต้องการให้งานของคุณดำเนินการ</value>
+  </data>
+  <data name="23" xml:space="preserve">
+    <value>วิธีใช้นาฬิกาปลุก</value>
+  </data>
+  <data name="24" xml:space="preserve">
+    <value>มีขั้นตอนสั้น ๆ สองสามขั้นตอนในการสร้างการเตือน</value>
+  </data>
+  <data name="25" xml:space="preserve">
+    <value>กดปุ่ม "ปลุกใหม่"</value>
+  </data>
+  <data name="26" xml:space="preserve">
+    <value>ตั้งชื่อ</value>
+  </data>
+  <data name="27" xml:space="preserve">
+    <value>ปรับการตั้งค่า (สร้างสำหรับ เวลา ระยะเวลาเสียงเรียกเข้า ระยะเวลาเลื่อนซ้ำ)</value>
+  </data>
+  <data name="28" xml:space="preserve">
+    <value>ตั้งค่าเสียง</value>
+  </data>
+  <data name="29" xml:space="preserve">
+    <value>กดปุ่ม "บันทึกการปลุก"</value>
+  </data>
+  <data name="3" xml:space="preserve">
+    <value>ที่ซึ่งคุณสามารถบันทึกงานกิจกรรมทั้งหมดของคุณ</value>
+  </data>
+  <data name="30" xml:space="preserve">
+    <value>ตอนนี้เราจะชี้แจงส่วนที่เราคิดว่าอาจก่อให้เกิดความสับสนขณะใช้นาฬิกาปลุก</value>
+  </data>
+  <data name="31" xml:space="preserve">
+    <value>รายการสร้างสำหรับมีวัตถุประสงค์เพื่อระบุ
+            จำนวนครั้งที่ควรมีเหตุการณ์ซ้ำ ในกรณีที่คุณเลือก "ครั้งเดียว" การเตือนของคุณจะเสร็จสิ้นทุก ๆ
+            วันในเวลาที่เลือก หากคุณเลือก "กำหนดเอง" คุณจะมีตัวเลือกในการระบุวันที่จะมีการเตือนเฉพาะ</value>
+  </data>
+  <data name="32" xml:space="preserve">
+    <value>การกู้คืนข้อมูล</value>
+  </data>
+  <data name="33" xml:space="preserve">
+    <value>สิ่งสำคัญที่ควรทราบคือ เรามีสองวิธีในการบันทึกข้อมูล
+            และที่ได้รับการรับรองและไม่ได้รับอนุญาต หากคุณบันทึกข้อมูลโดยไม่ได้ตรวจสอบสิทธิ์ งานหรือการเตือนของคุณจะถูกบันทึกไว้เป็นเวลา 24
+            ชั่วโมงแล้วลบออก หากคุณต้องการบันทึกข้อมูลของคุณในฐานข้อมูลของเราอย่างถาวร ให้ลงทะเบียนในแอพของเราด้วย a
+            การป้อนชื่อผู้ใช้และรหัสผ่านอย่างง่าย</value>
+  </data>
+  <data name="4" xml:space="preserve">
+    <value>ของคุณ</value>
+  </data>
+  <data name="5" xml:space="preserve">
+    <value>รายการงาน</value>
+  </data>
+  <data name="6" xml:space="preserve">
+    <value>หรือ</value>
+  </data>
+  <data name="7" xml:space="preserve">
+    <value>รายการปลุก</value>
+  </data>
+  <data name="8" xml:space="preserve">
+    <value>สามารถมีความยาวได้ไม่จำกัด และจะไม่รบกวนการทำงานของแอปพลิเคชันของเราแต่อย่างใด ต่อไปนี้ เราจะพยายามอธิบายการทำงานของแอปพลิเคชันและการใช้งานโดยสังเขปและชัดเจน เราหวังว่าคุณจะโชคดีในธุรกิจของคุณและเราหวังว่างานของเราจะเป็นประโยชน์อย่างมาก!</value>
+  </data>
+  <data name="9" xml:space="preserve">
+    <value>วิธีใช้การเตือนความจำ</value>
+  </data>
+  <data name="AlarmClockOnline" xml:space="preserve">
+    <value>นาฬิกาปลุกออนไลน์</value>
+  </data>
+  <data name="CalendarForWork" xml:space="preserve">
+    <value>ปฏิทินการทำงาน</value>
+  </data>
+  <data name="ClockTitle" xml:space="preserve">
+    <value>นาฬิกาปลุก ออนไลน์</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>ติดต่อ</value>
+  </data>
+  <data name="CookiesPolicy" xml:space="preserve">
+    <value>นโยบายคุกกี้</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>การวางแผนของวันนี้ง่ายกว่าที่เคยด้วยการแจ้งเตือนงานของเรา! ตั้งนาฬิกาปลุกส่วนที่สองของแอพของเราและปรับปรุงองค์กรชีวิตของคุณ!</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>สวัสดี</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>บ้าน</value>
+  </data>
+  <data name="lang" xml:space="preserve">
+    <value>th</value>
+  </data>
+  <data name="LifeOrganization" xml:space="preserve">
+    <value>องค์กรชีวิต</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>https://www.tasksreminders.com/th-TH/</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>เข้าสู่ระบบ</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>ออกจากระบบ</value>
+  </data>
+  <data name="MacCalendar" xml:space="preserve">
+    <value>ปฏิทิน Mac</value>
+  </data>
+  <data name="OnlineAlarmClock" xml:space="preserve">
+    <value>นาฬิกาปลุก ออนไลน์</value>
+  </data>
+  <data name="OnlineStopWatch" xml:space="preserve">
+    <value>นาฬิกาจับเวลาออนไลน์</value>
+  </data>
+  <data name="PlanningTheDay" xml:space="preserve">
+    <value>การวางแผนวัน</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>นโยบายความเป็นส่วนตัว</value>
+  </data>
+  <data name="ReminderApp" xml:space="preserve">
+    <value>แอพเตือนความจำ</value>
+  </data>
+  <data name="ReminderTitle" xml:space="preserve">
+    <value>แอพเตือนความจำออนไลน์ฟรี</value>
+  </data>
+  <data name="SetAlarm" xml:space="preserve">
+    <value>ตั้งนาฬิกาปลุก</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>ลงชื่อ</value>
+  </data>
+  <data name="TasksList" xml:space="preserve">
+    <value>รายการงาน</value>
+  </data>
+  <data name="WhatAboutUs" xml:space="preserve">
+    <value>สิ่งที่เกี่ยวกับเรา</value>
+  </data>
+</root>

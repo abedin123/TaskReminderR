@@ -18,17 +18,17 @@ namespace GenerateSuccess.ViewModels
 
         public string Success { get; set; }
 
-        [MaxLength(70, ErrorMessage = "Max length is 70!")]
-        [DataType(DataType.Text, ErrorMessage = "Please enter valid data!")]
+        [MaxLength(70, ErrorMessage = "15")]
+        [DataType(DataType.Text, ErrorMessage = "13")]
         public string TaskName { get; set; }
 
         [Remote(action: "TaskStatus", controller: "Task")]
         public string TaskStatus { get; set; }
 
-        [DataType(DataType.Date, ErrorMessage = "Please enter valid data in this field!")]
+        [DataType(DataType.Date, ErrorMessage = "13")]
         public DateTime From { get; set; }
 
-        [DataType(DataType.Date, ErrorMessage = "Please enter valid data in this field!")]
+        [DataType(DataType.Date, ErrorMessage = "13")]
         public DateTime To { get; set; }
 
         

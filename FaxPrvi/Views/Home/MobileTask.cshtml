@@ -1,4 +1,6 @@
-﻿@model GenerateSuccess.ViewModels.MainHomePreviewVM
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model GenerateSuccess.ViewModels.MainHomePreviewVM
 <div id="mainnotificationdiv" style="display:none;">
     <div id="tasknotificationdiv">
         @if (Model != null)
@@ -68,42 +70,42 @@
 <div id="parentmainmobilediv">
     <div class="mainmobilediv">
         <div class="addnewtaskalarmparent">
-            <a href="/Task/NewTaskMobile" class="btn addnewtaskalarm">New task</a>
+            <a asp-controller="Task" asp-action="NewTaskMobile" class="btn addnewtaskalarm">@Localizer["1"]</a>
         </div>
         <div class="smallsearchleftdiv">
-            <button id="filtertext" class="smallsearchfiltertext" onclick="Close()">Filter</button>
+            <button id="filtertext" class="smallsearchfiltertext" onclick="Close()">@Localizer["2"]</button>
         </div>
         <div id="smallsearchdiv">
             <div class="col-md-12 col-lg-4 smallchildfilterdiv">
-                <form action="/Home/MobileTaskSearch">
-                    <span class="researchtext">Search by:</span><br />
-                    <input class="effect inputsearch" type="text" placeholder="Task name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Task name'" asp-for="TaskName" name="TaskName" />
+                <form asp-controller="Home" asp-action="MobileTaskSearch" method="get">
+                    <span class="researchtext">@Localizer["13"]:</span><br />
+                    <input class="effect inputsearch" type="text" placeholder="@Localizer["3"]" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Localizer["3"]'" asp-for="TaskName" name="TaskName" />
                     <span class="text-danger" asp-validation-for="TaskName"></span>
                     <div id="status">
-                        <span class="researchtext status">Status:</span>
+                        <span class="researchtext status">@Localizer["4"]:</span>
                         <div class="sel sel--black-panther">
                             <span class="arroww"></span>
                             <select class="smallprofessionselect" id="select-profession" asp-for="TaskStatus" name="TaskStatus">
-                                <option value="0">All</option>
-                                <option value="1">All</option>
-                                <option value="2">In processing</option>
-                                <option value="3">Upcoming</option>
-                                <option value="4">Finished</option>
+                                <option value="0">@Localizer["5"]</option>
+                                <option value="1">@Localizer["5"]</option>
+                                <option value="2">@Localizer["6"]</option>
+                                <option value="3">@Localizer["7"]</option>
+                                <option value="4">@Localizer["8"]</option>
                             </select>
                         </div>
                     </div>
                     <span class="text-danger" asp-validation-for="TaskStatus"></span>
                     <div class="dateresearch">
-                        <span class="researchtext">From:</span>
+                        <span class="researchtext">@Localizer["9"]:</span>
                         <input type="date" name="From" class="fromtoresearch" asp-for="From" asp-format="{0:yyyy-MM-dd}" />
                         <span asp-validation-for="From" class="text-danger"></span>
-                        <span class="researchtext">To:</span>
+                        <span class="researchtext">@Localizer["10"]:</span>
                         <br />
-                        <input type="date" name="To" class="fromtoresearch" asp-for="To" asp-format="{0:yyyy-MM-dd}"/>
+                        <input type="date" name="To" class="fromtoresearch" asp-for="To" asp-format="{0:yyyy-MM-dd}" />
                         <span asp-validation-for="To" class="text-danger"></span>
                     </div>
                     <div class="btnsearchdiv">
-                        <button type="submit" class="btn btnsearch">Search</button>
+                        <button type="submit" class="btn btnsearch">@Localizer["11"]</button>
                     </div>
                 </form>
             </div>
@@ -121,9 +123,9 @@
                             {
                                 <div class="task">
                                     <div class="col-lg-10 col-md-10 parentmainsearchdiv">
-                                        <div class="statusdiv"><span class="statustext">Status:</span><span class="statusundertext">@item.Status</span></div>
+                                        <div class="statusdiv"><span class="statustext">@Localizer["4"]:</span><span class="statusundertext">@Localizer[@item.Status]</span></div>
                                         <div class="maintaskdiv"><span class="nameofthetask">@item.TaskName</span></div>
-                                        <div class="prioritytaskdiv"><span class="prirotytext">@item.DateDayStarting</span><span class="priorityundertext">@item.TimeStarting</span></div>
+                                        <div class="prioritytaskdiv"><span class="prirotytext">@Localizer[@item.DateDayStarting]</span><span class="priorityundertext">@item.TimeStarting</span></div>
                                     </div>
                                     <div class="editdeletetaskdiv">
                                         <form asp-controller="Task" asp-action="EditTaskMobile" method="post">
@@ -142,9 +144,9 @@
                             {
                                 <div class="task">
                                     <div class="col-lg-10 col-md-10 parentmainsearchdiv">
-                                        <div class="statusdiv"><span class="statustext">Status:</span><span class="statusundertext">@item.Status</span></div>
+                                        <div class="statusdiv"><span class="statustext">@Localizer["4"]:</span><span class="statusundertext">@Localizer[@item.Status]</span></div>
                                         <div class="maintaskdiv"><span class="nameofthetask">@item.TaskName</span></div>
-                                        <div class="prioritytaskdiv"><span class="prirotytext">@item.DateDayStarting</span><span class="priorityundertext">@item.TimeStarting</span></div>
+                                        <div class="prioritytaskdiv"><span class="prirotytext">@Localizer[@item.DateDayStarting]</span><span class="priorityundertext">@item.TimeStarting</span></div>
                                     </div>
                                     <div class="editdeletetaskdiv">
                                         <div class="editdiv editfinishedtask">
@@ -165,7 +167,7 @@
             </div>
         </div>
         <div class="col-lg-12 col-md-12 successcontaner">
-            <div class="class-lg-12" id="successdiv"><span class="successfulltext">Successability:</span><span class="successpercentage">@Model.Success</span></div>
+            <div class="class-lg-12" id="successdiv"><span class="successfulltext">@Localizer["12"]:</span><span class="successpercentage">@Model.Success</span></div>
         </div>
     </div>
 </div>

@@ -11,32 +11,32 @@ namespace GenerateSuccess.ViewModels
     {
         public string TaskID { get; set; }
 
-        [Required(ErrorMessage = "This field is required!")]
-        [MinLength(2, ErrorMessage = "Min length of task name field is 2!")]
-        [MaxLength(70, ErrorMessage = "Max length of task name field is 70!")]
+        [Required(ErrorMessage = "Required")]
+        [MinLength(3, ErrorMessage = "10")]
+        [MaxLength(70, ErrorMessage = "11")]
         public string TaskName { get; set; }
 
-        [MaxLength(230, ErrorMessage = "Max length of description field is 230!")]
+        [MaxLength(230, ErrorMessage = "12")]
         public string Description { get; set; }
 
         [Remote(action: "DateVal", controller: "Task", AdditionalFields = "EndDate,StartTimeOnce,EndTimeOnce")]
-        [Required(ErrorMessage = "This field is required!")]
-        [DataType(DataType.Date, ErrorMessage = "Please input correct type of data for this field!")]
+        [Required(ErrorMessage = "Required")]
+        [DataType(DataType.Date, ErrorMessage = "13")]
         public DateTime StartDate { get; set; }
 
         [Remote(action: "DateVal", controller: "Task", AdditionalFields = "StartDate,StartTimeOnce,EndTimeOnce")]
-        [Required(ErrorMessage = "This field is required!")]
-        [DataType(DataType.Date, ErrorMessage = "Please input correct type of data for this field!")]
+        [Required(ErrorMessage = "Required")]
+        [DataType(DataType.Date, ErrorMessage = "13")]
         public DateTime EndDate { get; set; }
 
         [Remote(action: "DateVal", controller: "Task", AdditionalFields = "StartDate,EndDate,EndTimeOnce")]
-        [DataType(DataType.Time, ErrorMessage = "Please input correct type of data for this field!")]
-        [Required(ErrorMessage = "This field is required!")]
+        [DataType(DataType.Time, ErrorMessage = "13")]
+        [Required(ErrorMessage = "Required")]
         public DateTime StartTimeOnce { get; set; }
 
         [Remote(action: "DateVal", controller: "Task", AdditionalFields = "StartDate,StartTimeOnce,EndDate")]
-        [DataType(DataType.Time, ErrorMessage = "Please input correct type of data for this field!")]
-        [Required(ErrorMessage = "This field is required!")]
+        [DataType(DataType.Time, ErrorMessage = "13")]
+        [Required(ErrorMessage = "Required")]
         public DateTime EndTimeOnce { get; set; }
 
         [DataType(DataType.Time)]
@@ -53,13 +53,13 @@ namespace GenerateSuccess.ViewModels
         public string S { get; set; }
 
         [Remote(action: "TimeVal", controller: "Task")]
-        [Required(ErrorMessage = "This field is required!")]
-        [Range(0, 500, ErrorMessage = "This field can't be negative and maximum value is 500!")]
+        [Required(ErrorMessage = "Required")]
+        [Range(0, 500, ErrorMessage = "14")]
         public int Hours { get; set; }
 
         [Remote(action: "TimeVal", controller: "Task")]
-        [Required(ErrorMessage = "This field is required!")]
-        [Range(0, 500, ErrorMessage = "This field can't be negative and maximum value is 500!")]
+        [Required(ErrorMessage = "Required")]
+        [Range(0, 500, ErrorMessage = "14")]
         public int Minutes { get; set; }
     }
 }

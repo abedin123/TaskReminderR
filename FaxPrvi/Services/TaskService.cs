@@ -116,9 +116,29 @@ namespace GenerateSuccess.Services
             return true;
         }
 
-        public string GenerateTaskName(string UserName)
+        public string GenerateTaskName(string UserName,string Language)
         {
             string name = "Activity";
+            if (Language == "ja-JP")
+            {
+                name = "アクティビティ";
+            }
+            if (Language == "th-TH")
+            {
+                name = "กิจกรรม";
+            }
+            if (Language == "pt-BR")
+            {
+                name = "Atividade";
+            }
+            if (Language == "vi-VN")
+            {
+                name = "Hoạt động";
+            }
+            if (Language == "uk-UA")
+            {
+                name = "Діяльність";
+            }
             var listoftasks = _context.UserTask.Include(a => a.User).Include(a=>a.Task).Where(a => a.User.UserName == UserName).ToList();
             int numberoftasks = listoftasks.Count();
             if (numberoftasks>=1)
@@ -133,15 +153,35 @@ namespace GenerateSuccess.Services
             while (ExistTaskName(listoftasks, name) == true)
             {
                 numberoftasks++;
-                name = GenerateName(numberoftasks);
+                name = GenerateName(numberoftasks, Language);
             }
 
             return name;
         }
 
-        private string GenerateName(int numberoftasks)
+        private string GenerateName(int numberoftasks,string Lang)
         {
             string name = "Activity";
+            if (Lang == "ja-JP")
+            {
+                name = "アクティビティ";
+            }
+            if (Lang == "th-TH")
+            {
+                name = "กิจกรรม";
+            }
+            if (Lang == "pt-BR")
+            {
+                name = "Atividade";
+            }
+            if (Lang == "vi-VN")
+            {
+                name = "Hoạt động";
+            }
+            if (Lang == "uk-UA")
+            {
+                name = "Діяльність";
+            }
             name += "[" + (numberoftasks + 1).ToString() + "]";
             return name;
         }

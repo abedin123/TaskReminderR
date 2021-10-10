@@ -1,4 +1,6 @@
-﻿@using Microsoft.AspNetCore.Http.Features
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@using Microsoft.AspNetCore.Http.Features
 
 @{
     var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
@@ -8,17 +10,16 @@
 
 @if (showBanner)
 {
-<div id="cookieConsent" class="alert alert-info" role="alert" style="position: relative; background-color: rgba(40,40,40,1); width: 100%; margin: 0; text-align: left;">
-    <div style="display:inline-block; width:85%; color:white; position:relative; left:0;">
-        We use cookies and other tracking technologies to improve your browsing experience on our website, to show you personalized content and targeted ads, to analyze our website traffic, and to understand where our visitors are coming from.
-        For more details, read our <a href="/Home/Cookies">Cookie policy</a> and <a href="/Home/Privacy">Privacy policy</a>.
+    <div id="cookieConsent" class="alert alert-info" role="alert" style="position: relative; background-color: rgba(40,40,40,1); width: 100%; margin: 0; text-align: left;">
+        <div style="display:inline-block; width:85%; color:white; position:relative; left:0;">
+            @Localizer["1"] <a asp-controller="Home" asp-action="Cookies">@Localizer["2"]</a> @Localizer["5"] <a asp-controller="Home" asp-action="Privacy">@Localizer["3"]</a>.
+        </div>
+        <div id="buttoncookie" style="display: inline-block; width: 10%; position:absolute; right:0;">
+            <button type="button" class="accept-policy btn-primary" style="padding-top:5px; padding-bottom:5px; padding-left:10px; padding-right:10px; border-radius:5px;" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
+                <span aria-hidden="true">@Localizer["4"]</span>
+            </button>
+        </div>
     </div>
-    <div id="buttoncookie" style="display: inline-block; width: 10%; position:absolute; right:0;">
-        <button type="button" class="accept-policy btn-primary" style="padding-top:5px; padding-bottom:5px; padding-left:10px; padding-right:10px; border-radius:5px;" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
-            <span aria-hidden="true">Accept</span>
-        </button>
-    </div>
-</div>
     <script>
         (function () {
             var button = document.querySelector("#cookieConsent button[data-cookie-string]");

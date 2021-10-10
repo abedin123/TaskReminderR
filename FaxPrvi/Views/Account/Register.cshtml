@@ -1,20 +1,23 @@
-﻿@model GenerateSuccess.ViewModels.RegisterVM
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@model GenerateSuccess.ViewModels.RegisterVM
 
 <div id="parentregisterdiv" class="container">
     <div id="userregisterdiv" class="user signupBx">
         <div id="formBx">
-            <form action="/Account/Register" method="post">
-                <h2 id="h2register">Create an account</h2>
-                <input class="inputregister" type="text" name="UserName" placeholder="Username" asp-for="UserName" />
+            <form asp-controller="Account" asp-action="Register" method="post">
+                <h2 id="h2register">@Localizer["1"]</h2>
+                <input class="inputregister" type="text" name="UserName" placeholder="@Localizer["2"]" asp-for="UserName" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
-                <input class="inputregister" name="Password" type="password" placeholder="Create Password" asp-for="Password"/>
+                <input class="inputregister" name="Password" type="password" placeholder="@Localizer["3"]" asp-for="Password" />
                 <span asp-validation-for="Password" class="text-danger"></span>
-                <input class="inputregister" name="ConfirmPassword" type="password" placeholder="Confirm Password" asp-for="ConfirmPassword"/>
+                <input class="inputregister" name="ConfirmPassword" type="password" placeholder="@Localizer["4"]" asp-for="ConfirmPassword" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                <button type="submit" class="inputregistersubmit">Sign Up</button>
+                <button type="submit" class="inputregistersubmit">@Localizer["5"]</button>
                 <p class="signup">
-                    Already have an account ?
-                    <a href="/Account/Login">Sign in.</a>
+                    @Localizer["6"] ?
+                    <a asp-controller="Account" asp-action="Login">@Localizer["7"].</a>
                 </p>
             </form>
         </div>

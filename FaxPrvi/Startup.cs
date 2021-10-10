@@ -45,7 +45,7 @@ namespace FaxPrvi
                     .AddDataAnnotationsLocalization(options =>
                     {
                         options.DataAnnotationLocalizerProvider = (type, factory) =>
-                            factory.Create(typeof(Common));
+                            factory.Create(typeof(SharedResource));
                     })
                     .AddViewLocalization(LanguageViewLocationExpanderFormat.SubFolder)
                     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
@@ -73,6 +73,17 @@ namespace FaxPrvi
             {
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 3;
+                options.Password.RequiredUniqueChars = 0;
             });
 
             services.Configure<RouteOptions>(options =>

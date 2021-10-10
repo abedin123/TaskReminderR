@@ -18,7 +18,7 @@ namespace GenerateSuccess
 
             var lang = values["lang"].ToString();
 
-            return lang == "en-US" || lang == "ja-JP";
+            return lang == "en-US" || lang == "ja-JP" || lang== "th-TH" || lang== "pt-BR" || lang=="vi-VN" || lang=="uk-UA";
         }
     }
 }

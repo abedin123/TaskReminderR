@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace GenerateSuccess.ViewModels
             {
                 return ValidationResult.Success;
             }
-            return new ValidationResult("At least one day must be marked!");
+            return new ValidationResult("9");
         }
     }
 }

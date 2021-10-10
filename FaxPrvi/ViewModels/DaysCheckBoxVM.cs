@@ -15,7 +15,7 @@ namespace GenerateSuccess.ViewModels
             {
                 return ValidationResult.Success;
             }
-            return new ValidationResult("At least one day must be marked!");
+            return new ValidationResult("9");
         }
     }
 }

@@ -2,8 +2,10 @@
 using GenerateSuccess.Services;
 using GenerateSuccess.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +17,39 @@ namespace GenerateSuccess.Controllers
     public class AccountController : Controller
     {
         private readonly IUserService _userService;
+        private string _currentLanguage;
+        private IHttpContextAccessor _httpContextAccessor;
 
-        public AccountController(IUserService userservice)
+        public IActionResult RedirectToDefaultLanguage()
+        {
+            var lang = CurrentLanguage;
+
+            if (lang != "en-US" && lang != "ja-JP" && lang != "th-TH" && lang != "pt-BR" && lang != "vi-VN" && lang != "uk-UA")
+            {
+                lang = "en-US";
+            }
+
+
+            return RedirectToAction("Index", new { lang = lang });
+        }
+
+        private string CurrentLanguage
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(_currentLanguage))
+                {
+                    return _currentLanguage;
+                }
+
+                return _currentLanguage;
+            }
+        }
+
+        public AccountController(IUserService userservice, IHttpContextAccessor httpContextAccessor)
         {
             _userService = userservice;
+            _httpContextAccessor = httpContextAccessor;
         }
         
         [HttpGet]
@@ -30,58 +61,34 @@ namespace GenerateSuccess.Controllers
         [AcceptVerbs("GET", "POST")]
         public IActionResult UserNameVal(string UserName)
         {
+            _currentLanguage = _httpContextAccessor.HttpContext.GetRouteValue("lang") as string;
             if (_userService.UserNameExistVal(UserName))
             {
-                return Json($"A user named {UserName} already exists.");
+                if (_currentLanguage == "en-US")
+                {
+                    return Json($"A username {UserName} already exists.");
+                }
+                if (_currentLanguage == "ja-JP")
+                {
+                    return Json($"ユーザー名 {UserName} もう存在している.");
+                }
+                if (_currentLanguage == "th-TH")
+                {
+                    return Json($"ชื่อผู้ใช้ {UserName} มีอยู่แล้ว.");
+                }
+                if (_currentLanguage == "pt-BR")
+                {
+                    return Json($"Um nome de usuário {UserName} já existe.");
+                }
+                if (_currentLanguage == "vi-VN")
+                {
+                    return Json($"Một tên người dùng {UserName} đã tồn tại.");
+                }
+                if (_currentLanguage == "uk-UA")
+                {
+                    return Json($"Ім'я користувача {UserName} вже існує.");
+                }
             }
-
-            if (!_userService.UserNameCharVal(UserName))
-            {
-                return Json($"This field only accepts letters and numbers!");
-            }
-
-            return Json(true);
-        }
-
-        [AcceptVerbs("GET", "POST")]
-        public IActionResult PasswordVal(string Password)
-        {
-            if (!_userService.PasswordAZ(Password))
-            {
-                return Json($"The password must contain at least one capital letter (A,B,C,D...)!");
-            }
-
-            if (!_userService.PasswordNum(Password))
-            {
-                return Json($"The password must contain at least one number (1,2,3,4...)!");
-            }
-
-            if (!_userService.PasswordSpec(Password))
-            {
-                return Json($"The password must contain at least one special character (!,#,$,%,&,/,(,),?,=)!");
-            }
-
-            return Json(true);
-        }
-
-        [AcceptVerbs("GET", "POST")]
-        public IActionResult PasswordConfirmVal(string ConfirmPassword)
-        {
-            if (!_userService.PasswordAZ(ConfirmPassword))
-            {
-                return Json($"The password must contain at least one capital letter (A,B,C,D...)!");
-            }
-
-            if (!_userService.PasswordNum(ConfirmPassword))
-            {
-                return Json($"The password must contain at least one number (1,2,3,4...)!");
-            }
-
-            if (!_userService.PasswordSpec(ConfirmPassword))
-            {
-                return Json($"The password must contain at least one special character (!,#,$,%,&,/,(,),?,=)!");
-            }
-
             return Json(true);
         }
 
@@ -138,10 +145,36 @@ namespace GenerateSuccess.Controllers
                         return RedirectToAction("Index", "Home");
                     }
                 }
+                _currentLanguage = _httpContextAccessor.HttpContext.GetRouteValue("lang") as string;
+                string uncorr = "";
+                if (_currentLanguage == "en-US")
+                {
+                    uncorr = "Login details are not correct!";
+                }
+                if (_currentLanguage == "ja-JP")
+                {
+                    uncorr = "ログインの詳細が正しくありません！";
+                }
+                if (_currentLanguage == "th-TH")
+                {
+                    return Json($"รายละเอียดการเข้าสู่ระบบไม่ถูกต้อง!");
+                }
+                if (_currentLanguage == "pt-BR")
+                {
+                    return Json($"Os detalhes de login não estão corretos!");
+                }
+                if (_currentLanguage == "vi-VN")
+                {
+                    return Json($"Chi tiết đăng nhập không chính xác!");
+                }
+                if (_currentLanguage == "uk-UA")
+                {
+                    return Json($"Дані для входу неправильні!");
+                }
                 LoginVM wrong = new LoginVM
                 {
                     UserName = user.UserName,
-                    Uncorrectdetails = "Login details are not correct!",
+                    Uncorrectdetails = uncorr,
                     Password = user.Password,
                     RememberMe = user.RememberMe
                 };
@@ -158,7 +191,7 @@ namespace GenerateSuccess.Controllers
         {
             _userService.LoginOut();
 
-            return Redirect("/Home/Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

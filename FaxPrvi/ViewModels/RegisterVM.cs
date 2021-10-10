@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,24 +11,22 @@ namespace GenerateSuccess.ViewModels
     public class RegisterVM
     {
         [Remote(action: "UserNameVal", controller: "Account")]
-        [Required(ErrorMessage = "This field is required!")]
-        [MinLength(4, ErrorMessage = "Min length of username field is 4!")]
-        [MaxLength(30, ErrorMessage = "Max length of username field is 30!")]
+        [Required (ErrorMessage="Required")]
+        [MinLength(4, ErrorMessage = "1")]
+        [MaxLength(30, ErrorMessage = "2")]
+        [DataType(DataType.Text, ErrorMessage = "8")]
         public string UserName { get; set; }
 
-        [Remote(action: "PasswordVal", controller: "Account")]
-        [Required(ErrorMessage = "This field is required!")]
-        [MinLength(5, ErrorMessage = "Min length of password field is 5!")]
-        [MaxLength(50, ErrorMessage = "Max length of password field is 50!")]
+        [Required(ErrorMessage = "Required")]
+        [MinLength(5, ErrorMessage = "3")]
+        [MaxLength(50, ErrorMessage = "4")]
+        [DataType(DataType.Text, ErrorMessage = "8")]
         public string Password { get; set; }
 
-
-        [Remote(action: "PasswordConfirmVal", controller: "Account")]
-        [Required(ErrorMessage = "This field is required!")]
-        [MinLength(5, ErrorMessage = "Min length of password field is 5!")]
-        [MaxLength(50, ErrorMessage = "Max length of password field is 50!")]
-        [Display(Name = "Confirm Password")]
-        [Compare("Password", ErrorMessage = "Password and confirmation password not match.")]
+        [Required(ErrorMessage = "Required")]
+        [Compare("Password", ErrorMessage = "5")]
+        [MaxLength(50, ErrorMessage = "4")]
+        [DataType(DataType.Text, ErrorMessage = "8")]
         public string ConfirmPassword { get; set; }
     }
 }

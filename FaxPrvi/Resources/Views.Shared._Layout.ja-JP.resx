@@ -239,7 +239,7 @@
     <value>仕事のカレンダー</value>
   </data>
   <data name="ClockTitle" xml:space="preserve">
-    <value>オンライン目覚まし時計</value>
+    <value>オンラインアラーム時計</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>コンタクト</value>
@@ -248,7 +248,7 @@
     <value>クッキーポリシー</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>タスクリマインダーで1日の計画がこれまでになく簡単になりました。また、私たちのアプリの2番目の部分にアラームを設定し、あなたの人生の組織を改善してください！</value>
+    <value>タスクリマインダーで1日の計画がこれまでになく簡単になりました。また、アラームセット 私たちのアプリの2番目の部分にアラームを設定し、あなたの人生の組織を改善してください！</value>
   </data>
   <data name="Hello" xml:space="preserve">
     <value>こんにちは</value>
@@ -256,8 +256,14 @@
   <data name="Home" xml:space="preserve">
     <value>家</value>
   </data>
+  <data name="lang" xml:space="preserve">
+    <value>ja</value>
+  </data>
   <data name="LifeOrganization" xml:space="preserve">
     <value>生命組織</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>https://www.tasksreminders.com/ja-JP/</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>ログイン</value>
@@ -269,7 +275,7 @@
     <value>Macカレンダー</value>
   </data>
   <data name="OnlineAlarmClock" xml:space="preserve">
-    <value>オンライン目覚まし時計</value>
+    <value>オンラインアラーム時計</value>
   </data>
   <data name="OnlineStopWatch" xml:space="preserve">
     <value>オンラインストップウォッチ</value>

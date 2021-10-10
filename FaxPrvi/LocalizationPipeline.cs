@@ -25,6 +25,10 @@ namespace GenerateSuccess
                                 {
                                     new CultureInfo("en-US"),
                                     new CultureInfo("ja-JP"),
+                                    new CultureInfo("th-TH"),
+                                    new CultureInfo("pt-BR"),
+                                    new CultureInfo("vi-VN"),
+                                    new CultureInfo("uk-UA"),
                                 };
 
             options.DefaultRequestCulture = new RequestCulture(culture: "en-US", uiCulture: "en-US");

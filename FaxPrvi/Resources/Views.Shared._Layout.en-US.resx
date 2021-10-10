@@ -256,8 +256,14 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="lang" xml:space="preserve">
+    <value>en</value>
+  </data>
   <data name="LifeOrganization" xml:space="preserve">
     <value>life organization</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>https://www.tasksreminders.com/en-US/</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
